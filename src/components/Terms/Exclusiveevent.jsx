@@ -109,7 +109,20 @@ export default function Exclusiveevent() {
           Authorization: `Bearer ${JSON.parse(userToken).token}`,
         },
       })
-      .then((d) => setEventData(d?.data?.filter((e) => e.isApproved)))
+      .then((d) =>
+        setEventData(
+          d?.data?.filter((e) => {
+            if (e.id == navigate?.pathname?.split("/")[2]) {
+              return false;
+            }
+            if (e.isApproved == 1) {
+              return true;
+            } else {
+              return false;
+            }
+          })
+        )
+      )
       .catch((err) => {
         console.log(err);
       });
@@ -121,12 +134,14 @@ export default function Exclusiveevent() {
         <div className="mp-left">
           <div className="sep-eventinfo">
             <div className="sep-einfo-head">
-              <button>
-                <span style={{ position: "relative", top: "3px" }}>
-                  <BsChevronLeft />
-                </span>
-                <span>Back to Events Search </span>
-              </button>
+              <a href="/events">
+                <button>
+                  <span style={{ position: "relative", top: "3px" }}>
+                    <BsChevronLeft />
+                  </span>
+                  <span>Back to Events Search </span>
+                </button>
+              </a>
               <div>
                 <div>
                   <BsFlag />

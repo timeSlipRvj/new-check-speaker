@@ -48,7 +48,7 @@ function EventError() {
         <div className="speaker">
           <img
             src={require("../components/images/EventsPage2.png")}
-            style={{ height: "60%", marginTop:"20px" }}
+            style={{ height: "60%", marginTop: "20px" }}
             alt={""}
           />
           <div className="fp-text">
@@ -134,28 +134,28 @@ function EventError() {
               justifyContent: "space-between",
             }}
           >
-            <Box
+            {/* <Box
               sx={{
                 width: "50%",
                 flex: "0 0 50%",
                 pl: 1,
                 pr: 1,
               }}
+            > */}
+            <Button
+              href="/login"
+              variant="contained"
+              style={{
+                backgroundColor: "#ffbf19",
+                borderColor: "#ffbf19",
+                color: "#333",
+                width: "100%",
+              }}
             >
-              <Button
-                href="/login"
-                variant="contained"
-                style={{
-                  backgroundColor: "#ffbf19",
-                  borderColor: "#ffbf19",
-                  color: "#333",
-                  width: "100%",
-                }}
-              >
-                Sign In
-              </Button>
-            </Box>
-            <Box
+              Sign In / up
+            </Button>
+            {/* </Box> */}
+            {/* <Box
               sx={{
                 width: "50%",
                 flex: "0 0 50%",
@@ -175,7 +175,7 @@ function EventError() {
               >
                 Sign Up
               </Button>
-            </Box>
+            </Box> */}
           </Box>
         </Box>
       </Modal>

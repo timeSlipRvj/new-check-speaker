@@ -63,7 +63,7 @@ export default function Categories() {
                 alt={""}
               />
               <p className="fpoc-text">Find the perfect speaker effortlessly</p>
-              <a href="/addevents">
+              <a href="/addevent">
                 <button className="fpoc-btn">Create Events</button>
               </a>
             </div>

@@ -36,7 +36,7 @@
 }
 .fp-text {
   position: absolute;
-  bottom: 5rem;
+  bottom: 8rem !important;
   width: 100%;
   text-align: center;
 }

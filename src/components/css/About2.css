@@ -53,7 +53,7 @@
   padding: 1.5rem;
   text-align: center;
 }
-.box-two p {
+/* .box-two p {
   font-family: Roboto;
   font-style: normal;
   font-weight: 900;
@@ -69,7 +69,7 @@
   font-family: sans-serif;
   font-weight: normal;
   margin-bottom: 0;
-}
+} */
 .create-event-btn {
   border: 1px solid #ffbf19;
   box-sizing: border-box;
@@ -240,4 +240,11 @@
 .tlower .tprofilecard .tpc-avatar {
   width: 8rem;
   height: 8rem;
+}
+
+.col-first p {
+  color: #000 !important;
+  font-size: medium;
+  font-weight: 500;
+  margin-bottom: 1rem;
 }

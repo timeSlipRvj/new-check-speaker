@@ -25,7 +25,7 @@ export default function Firstpage() {
             <a href="/events">
               <button className="bg-btn">EXPLORE EVENTS</button>
             </a>
-            <p className="one">SpeakerOre</p>
+            {/* <p className="one">SpeakerOre</p> */}
             <p className="two">
               Direct Access to Thousands of Events to Speak at
             </p>

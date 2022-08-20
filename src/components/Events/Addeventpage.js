@@ -162,7 +162,7 @@ export default function Addeventpage() {
                         onChange={(e) => setTopic(e.target.value)}
                         value={topic}
                       />
-                      <p>Event’s URL</p>
+                      <p>Event’s URL (Apply to Speak) </p>
                       <input
                         type="url"
                         className="mpes-input"
@@ -178,8 +178,58 @@ export default function Addeventpage() {
                         onChange={(e) => setAudienceSize(e.target.value)}
                         value={AudienceSize}
                       />
-                      <p>Categories (separated by ,)</p>
-                      <input
+                      <p>Categories</p>
+
+                      <select
+                        className="mpes-input"
+                        style={{
+                          paddingTop: "0",
+                          paddingBottom: "0",
+                          color: "grey",
+                        }}
+                        onChange={(e) => setCategories(e.target.value)}
+                        value={Categories}
+                      >
+                        <option value="" selected>
+                          Choose Category
+                        </option>
+                        <option value="Business">Business</option>
+                        <option value="Leadership">Leadership</option>
+                        <option value="Sales">Sales</option>
+                        <option value="Communication">Communication</option>
+                        <option value="Health">Health</option>
+                        <option value="Fitness">Fitness</option>
+                        <option value="Presentation skills">
+                          Presentation skills
+                        </option>
+                        <option value="Soft Skills">Soft Skills</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="LGBTQ">LGBTQ</option>
+                        <option value="Oil and Gas">Oil and Gas</option>
+                        <option value="Manufacturing">Manufacturing</option>
+                        <option value="Retail">Retail</option>
+                        <option value="Coaching">Coaching</option>
+                        <option value="Information Technology">
+                          Information Technology
+                        </option>
+                        <option value="Education">Education</option>
+                        <option value="Motivation">Motivation</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Parenting">Parenting</option>
+                        <option value="Innovation">Innovation</option>
+                        <option value="Automobile">Automobile</option>
+                        <option value="Creativity">Creativity</option>
+                        <option value="Human Resources">Human Resources</option>
+                        <option value="Advertising">Advertising</option>
+                        <option value="Media">Media</option>
+                        <option value="Agriculture">Agriculture</option>
+                        <option value="Banking">Banking</option>
+                        <option value="Design Thinking">Design Thinking</option>
+                        <option value="Artificial Intelligence">
+                          Artificial Intelligence
+                        </option>
+                      </select>
+                      {/* <input
                         type="text"
                         className="mpes-input"
                         placeholder="Write Here"
@@ -187,7 +237,7 @@ export default function Addeventpage() {
                           setCategories(e.target.value.split(","))
                         }
                         value={Categories}
-                      />
+                      /> */}
                       <p>Engagement Terms </p>
                       <select
                         className="mpes-input"
@@ -376,9 +426,7 @@ export default function Addeventpage() {
                         </div>
                         <button
                           class="addMore"
-                          title="Events only for SpeakerOre subscribers. All the
-                          speaker in these events will be selected among
-                          speakers or members."
+                          title="Events only for SpeakerOre subscribers. All the speaker in these events will be selected from speakerore website only."
                         >
                           <InfoOutlinedIcon fontSize="small" />
                         </button>

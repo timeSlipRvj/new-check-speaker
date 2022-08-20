@@ -45,7 +45,7 @@ export default function Footer() {
         <ul className="thirdcolumn">
           <li></li>
 
-          <li>Subscribing to SpeakerOre unlocks unlimited events. </li>
+          <li></li>
           <li className="fc10">
             <span>
               <a

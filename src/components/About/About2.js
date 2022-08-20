@@ -23,34 +23,55 @@ const About2 = () => {
               One potential customer in the audience could create a positive
               impact by becoming a client, giving a referral or investing in
               your business. Today's business ecosystem requires every
-              entrepreneur and experts to be visible all the time. Out of sight
-              is out of mind! Speakerore.com solves the biggest and the most
-              basic problem that stops an expert from becoming a successful and
-              famous speaker. That is - finding the right speaking
-              opportunities. Successful speakers speak more often. Some speakers
-              invest in hiring good talent to identify opportunities which
-              obviously is an expensive way of doing things. But most speakers
-              spend their own time doing it. This method works out to be more
-              expensive (your time value) and is highly inconsistent. It takes
-              away 80% or more of your time and even tiny changes in your
-              routine disrupts the entire process which requires enormous
-              efforts to get back. Which means losing speaking opportunities.
-              Sometimes really good ones. Speakerore is a portal that provides
-              information on events from all over the world where speakers from
-              across industries are required. These events could be conferences,
-              summits, online interviews, corporate requirements, workshops,
-              unconferences, panel discussions or something else. It includes
-              all in-person, virtual, and hybrid events for you to choose from.
+              entrepreneur and experts to be visible all the time.{" "}
+            </p>
+
+            <p>Out of sight is out of mind!</p>
+
+            <p>
+              Speakerore.com solves the biggest and the most basic problem that
+              stops an expert from becoming a successful and famous speaker.
+              That is - finding the right speaking opportunities.
+            </p>
+
+            <p>Successful speakers speak more often.</p>
+
+            <p>
+              Some speakers invest in hiring good talent to identify
+              opportunities which obviously is an expensive way of doing things.
+              But most speakers spend their own time doing it. This method works
+              out to be more expensive (your time value) and is highly
+              inconsistent. It takes away 80% or more of your time and even tiny
+              changes in your routine disrupts the entire process which requires
+              enormous efforts to get back. Which means losing speaking
+              opportunities. Sometimes really good ones.
+            </p>
+
+            <p>
+              Speakerore is a portal that provides information on events from
+              all over the world where speakers from across industries are
+              required. These events could be conferences, summits, online
+              interviews, corporate requirements, workshops, unconferences,
+              panel discussions or something else. It includes all in-person,
+              virtual, and hybrid events for you to choose from.
+            </p>
+
+            <p>
               With more than 4000 events listed every year, we also have 100+
               SpeakerOre exclusive events where speakers are selected only from
               SpeakerOre members. There is no referral fee or commission, and
               you get to connect with the organisers directly. No favouritism or
-              influence from our team. The stage is set! The organisers are
-              shortlisting. Be there! After all, even a single event could
-              change the trajectory of your speaking business. And we bring in
-              at least 4000 such event details to you. Join the speakerore.com
-              tribe now.
+              influence from our team.
             </p>
+
+            <p>
+              The stage is set! The organisers are shortlisting. Be there! After
+              all, even a single event could change the trajectory of your
+              speaking business. And we bring in at least 4000 such event
+              details to you.{" "}
+            </p>
+
+            <p>Join the speakerore.com tribe now.</p>
           </div>
           <div className="auditoriumimg">
             <img src={Culture} alt="" />
@@ -123,14 +144,16 @@ const About2 = () => {
                 Create an Event
               </button>
             </a>
-            <button
-              className="create-event-btn eprbtn1"
-              style={{
-                margin: "1rem",
-              }}
-            >
-              Search events
-            </button>
+            <a href="/events">
+              <button
+                className="create-event-btn eprbtn1"
+                style={{
+                  margin: "1rem",
+                }}
+              >
+                Search events
+              </button>
+            </a>
           </div>
         </div>
         <LoggedInSidebar />

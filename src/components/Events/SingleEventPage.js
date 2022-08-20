@@ -54,7 +54,7 @@ export default function SingleEventPage() {
       .then((d) =>
         setEventData(
           d?.data?.filter((e) => {
-            if (e.id === singleEventData?.id) {
+            if (e.id == navigate?.pathname?.split("/")[2]) {
               return false;
             }
             if (e.isApproved == 1) {
@@ -74,12 +74,14 @@ export default function SingleEventPage() {
       <div className="mp-left">
         <div className="sep-eventinfo">
           <div className="sep-einfo-head">
-            <button>
-              <span style={{ position: "relative", top: "3px" }}>
-                <BsChevronLeft />
-              </span>
-              <span>Back to Events Search </span>
-            </button>
+            <a href="/events">
+              <button>
+                <span style={{ position: "relative", top: "3px" }}>
+                  <BsChevronLeft />
+                </span>
+                <span>Back to Events Search </span>
+              </button>
+            </a>
             <div>
               <div>
                 <BsFlag />
