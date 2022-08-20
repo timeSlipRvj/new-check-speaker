@@ -9,7 +9,7 @@ import {
 } from "firebase/auth";
 import { auth, provider, providerFacebook } from "../../config/firebase";
 
-const SignInUp = () => {
+const SignInUp = ({ setLogin }) => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [name, setName] = useState("");
@@ -30,10 +30,14 @@ const SignInUp = () => {
         console.log("Success", data?.data);
         localStorage.setItem("@token", JSON.stringify(data?.data));
         if (data?.data?.userdata?.role === "MODERATOR") {
+          setLogin();
           navigate("/myprofile", { replace: true });
         }
         // if (data?.data?.isSubscribed) {
-        else navigate("/events", { replace: true });
+        else {
+          setLogin();
+          navigate("/events", { replace: true });
+        }
         // }
       })
       .catch((err) => {
@@ -53,10 +57,14 @@ const SignInUp = () => {
         console.log("Success", data?.data);
         localStorage.setItem("@token", JSON.stringify(data?.data));
         if (data?.data?.userdata?.role === "MODERATOR") {
+          setLogin();
           navigate("/myprofile", { replace: true });
         }
         // if (data?.data?.isSubscribed) {
-        else navigate("/events", { replace: true });
+        else {
+          setLogin();
+          navigate("/events", { replace: true });
+        }
         // }
       })
       .catch((err) => {

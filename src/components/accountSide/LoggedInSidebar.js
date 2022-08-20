@@ -38,25 +38,25 @@ function LoggedInSidebar({ setisExclusive }) {
           marginTop: 15,
         }}
       >
-        Sign In
+        Sign In / Up
       </Button>
     );
 
-    loginButtons.push(
-      <Button
-        key="1"
-        href="/login"
-        variant="outlined"
-        style={{
-          color: "#FFBF19",
-          borderColor: "#FFBF19",
-          width: "100%",
-          marginTop: 15,
-        }}
-      >
-        Sign Up
-      </Button>
-    );
+    // loginButtons.push(
+    //   <Button
+    //     key="1"
+    //     href="/login"
+    //     variant="outlined"
+    //     style={{
+    //       color: "#FFBF19",
+    //       borderColor: "#FFBF19",
+    //       width: "100%",
+    //       marginTop: 15,
+    //     }}
+    //   >
+    //     Sign Up
+    //   </Button>
+    // );
 
     loginButtons.push(
       <p
@@ -71,34 +71,34 @@ function LoggedInSidebar({ setisExclusive }) {
       </p>
     );
 
-    loginButtons.push(
-      <h2
-        style={{
-          marginTop: 50,
-          fontSize: 12,
-          textAlign: "center",
-          fontWeight: 700,
-        }}
-      >
-        {" "}
-        Why Sign In/Up?{" "}
-      </h2>
-    );
+    // loginButtons.push(
+    //   <h2
+    //     style={{
+    //       marginTop: 50,
+    //       fontSize: 12,
+    //       textAlign: "center",
+    //       fontWeight: 700,
+    //     }}
+    //   >
+    //     {" "}
+    //     Why Sign In/Up?{" "}
+    //   </h2>
+    // );
 
-    loginButtons.push(
-      <ul
-        style={{
-          marginTop: 18,
-          fontSize: 10,
-          textAlign: "left",
-          lineHeight: "14px",
-        }}
-      >
-        <li key={1}>Get event details for FREE.</li>
-        <li key={2}>Unlimited clicks on events</li>
-        <li key={3}>Get hired through speakerOre exclusive events </li>
-      </ul>
-    );
+    // loginButtons.push(
+    //   <ul
+    //     style={{
+    //       marginTop: 18,
+    //       fontSize: 10,
+    //       textAlign: "left",
+    //       lineHeight: "14px",
+    //     }}
+    //   >
+    //     <li key={1}>Get event details for FREE.</li>
+    //     <li key={2}>Unlimited clicks on events</li>
+    //     <li key={3}>Get hired through speakerOre exclusive events </li>
+    //   </ul>
+    // );
   }
 
   let resoursesLinks = {
@@ -192,7 +192,7 @@ function LoggedInSidebar({ setisExclusive }) {
 
         {JSON.parse(localStorage.getItem("@token"))?.userdata && (
           <a href="/events">
-            <div className="eprbtn2">SpeakerOre exclusive Events</div>
+            <div className="eprbtn2">View Events</div>
           </a>
         )}
         {JSON.parse(localStorage.getItem("@token"))?.userdata?.subscribed && (

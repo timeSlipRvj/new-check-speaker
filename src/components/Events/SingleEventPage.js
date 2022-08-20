@@ -51,7 +51,20 @@ export default function SingleEventPage() {
           Authorization: `Bearer ${JSON.parse(userToken).token}`,
         },
       })
-      .then((d) => setEventData(d?.data))
+      .then((d) =>
+        setEventData(
+          d?.data?.filter((e) => {
+            if (e.id === singleEventData?.id) {
+              return false;
+            }
+            if (e.isApproved == 1) {
+              return true;
+            } else {
+              return false;
+            }
+          })
+        )
+      )
       .catch((err) => {
         console.log(err);
       });
@@ -100,7 +113,7 @@ export default function SingleEventPage() {
                   <BsCalendar3 />
                 </span>
                 <span>Date:</span>
-                <span>{singleEventData?.submitted_on}</span>
+                <span>{singleEventData?.startTime}</span>
               </div>
               <div className="eibl-location" style={{ marginBottom: "0.4rem" }}>
                 <span
@@ -109,7 +122,7 @@ export default function SingleEventPage() {
                   <BiMap />
                 </span>
                 <span>Location:</span>
-                <span>**{singleEventData?.country}</span>
+                <span>{singleEventData?.location}</span>
               </div>
               <div className="eibl-link" style={{ marginBottom: "0.4rem" }}>
                 <span
@@ -150,50 +163,59 @@ export default function SingleEventPage() {
         </div>
         <div className="mp-lower">
           <div className="vc-sec">
-            {eventData?.map((data) => {
-              return (
-                <div className="event-card">
-                  <div className="ec-section1">
-                    <div className="eds1-l">
-                      <p className="e1">{data?.eventName}</p>
-                      <p className="e2">{data?.location}</p>
-                    </div>
-                    <div className="eds1-r">
-                      <BsFillBookmarkFill />
-                    </div>
-                  </div>
-                  <div className="ec-section2">
-                    <span>
-                      <div
-                        style={{ marginRight: "0.5rem", fontSize: "medium" }}
-                      >
-                        <BsFillCalendarEventFill />
+            {eventData &&
+              eventData?.map((data) => {
+                return (
+                  <div className="event-card">
+                    <div className="ec-section1">
+                      <div className="eds1-l">
+                        <p className="e1">{data?.eventName}</p>
+                        <p className="e2">{data?.location}</p>
                       </div>
-                      <p>{data?.start_time}</p>
-                    </span>
-                    <p className="e8">ONLINE</p>
-                  </div>
-                  <div className="ec-section3">
-                    Tags:{" "}
-                    <p className="e4">Industry, Film, Acting, Speaking </p>
-                  </div>
-                  <div className="ec-section4">{data?.description}</div>
-                  <div className="ec-section5">
-                    <a href={`/single-event/${data?.id}`}>
-                      <button
-                        className="eprbtn2"
-                        style={{
-                          background: "#ffbf19",
-                          padding: "0.5rem 2rem",
-                        }}
+                      <div className="eds1-r">
+                        <BsFillBookmarkFill />
+                      </div>
+                    </div>
+                    <div className="ec-section2">
+                      <span>
+                        <div
+                          style={{
+                            marginRight: "0.5rem",
+                            fontSize: "medium",
+                          }}
+                        >
+                          <BsFillCalendarEventFill />
+                        </div>
+                        <p>{data?.startTime}</p>
+                      </span>
+                      <p className="e8">ONLINE</p>
+                    </div>
+                    <div className="ec-section3">
+                      Tags: <p className="e4">{data?.tags}</p>
+                    </div>
+                    <div className="ec-section4">{data?.description}</div>
+                    <div className="ec-section5">
+                      <a
+                        href={
+                          data.isExclusive
+                            ? `/exevent/${data?.id}`
+                            : `/event/${data?.id}`
+                        }
                       >
-                        View Details
-                      </button>
-                    </a>
+                        <button
+                          className="eprbtn2"
+                          style={{
+                            background: "#ffbf19",
+                            padding: "0.5rem 2rem",
+                          }}
+                        >
+                          View Details
+                        </button>
+                      </a>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
           </div>
         </div>
       </div>

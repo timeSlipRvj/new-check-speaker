@@ -34,6 +34,7 @@ import Exclusiveevent from "./components/Terms/Exclusiveevent";
 import Exevent from "./components/Events/Exevents";
 import Faq from "./components/FAQ/Faq";
 import { Task } from "@mui/icons-material";
+import { useState } from "react";
 
 function PrivateRoute({ component: Component, ...rest }) {
   let auth = JSON.parse(localStorage.getItem("@token"))?.token;
@@ -42,11 +43,19 @@ function PrivateRoute({ component: Component, ...rest }) {
   }
   return <Navigate to="/login" />;
 }
+
 const App = () => {
-  let auth = JSON.parse(localStorage.getItem("@token"))?.token;
+  const [auth, setAuth] = useState(
+    JSON.parse(localStorage.getItem("@token"))?.token
+  );
+
+  const setLogin = () => {
+    setAuth(JSON.parse(localStorage.getItem("@token"))?.token);
+  };
+
   return (
     <>
-      <Navbar />
+      <Navbar auth={auth} />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Firstpage />} />
@@ -77,7 +86,7 @@ const App = () => {
             element={<PrivateRoute component={SingleEventPage} />}
           />
           <Route path="/faq" element={<Faq />} />
-          <Route path="/login" element={<SignInUp />} />
+          <Route path="/login" element={<SignInUp setLogin={setLogin} />} />
           <Route path="/subplan" element={<SubPlan />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />

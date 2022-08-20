@@ -42,7 +42,7 @@ export default function Addeventpage() {
       start_time: start_time || "",
       end_time: end_time || "2025-09-01T04:49:42.144Z",
       website: eventSite,
-      mode: mode ? mode : "In-person",
+      mode: mode ? mode : "Online",
       topic: topic,
       location: location,
       engagementTerm: engagementTerm ? engagementTerm : "Probono",
@@ -116,7 +116,16 @@ export default function Addeventpage() {
                           className="mpes-input"
                           placeholder="Write Here"
                           value={end_time}
-                          onChange={(e) => setend_time(e.target.value)}
+                          onChange={(e) => {
+                            // if date is less than start date then show error
+                            if (e.target.value < start_time) {
+                              alert(
+                                "End date should be greater than start date"
+                              );
+                            } else {
+                              setend_time(e.target.value);
+                            }
+                          }}
                         />
                       </div>
                       <p>Mode</p>
@@ -130,11 +139,11 @@ export default function Addeventpage() {
                         onChange={(e) => setMode(e.target.value)}
                         value={mode}
                       >
-                        <option value="Virtual" selected>
+                        <option value="" selected>
                           Choose Mode
                         </option>
-                        <option value="In-person">In-person</option>
-                        <option value="Virtual">Virtual</option>
+                        <option value="Online">Online</option>
+                        <option value="Offline">Offline</option>
                         <option value="Hybrid">Hybrid</option>
                       </select>
                       <p>Location</p>
@@ -153,7 +162,7 @@ export default function Addeventpage() {
                         onChange={(e) => setTopic(e.target.value)}
                         value={topic}
                       />
-                      <p>Event's Website</p>
+                      <p>Event’s URL</p>
                       <input
                         type="url"
                         className="mpes-input"
@@ -163,7 +172,7 @@ export default function Addeventpage() {
                       />
                       <p>Audience Size</p>
                       <input
-                        type="text"
+                        type="number"
                         className="mpes-input"
                         placeholder="Write Here"
                         onChange={(e) => setAudienceSize(e.target.value)}
@@ -205,7 +214,7 @@ export default function Addeventpage() {
                     </div>
 
                     <div className="mpes-form">
-                      <p>Event Description (100 words) </p>
+                      <p>Event Description (300 Characters) </p>
                       <textarea
                         rows="4"
                         cols="46"
@@ -220,7 +229,7 @@ export default function Addeventpage() {
                         onChange={(e) => setDescription(e.target.value)}
                         res
                       ></textarea>
-                      <p>Detailed Event Description (500 words)</p>
+                      <p>Detailed Event Description</p>
                       <textarea
                         rows="5"
                         cols="46"
@@ -334,6 +343,20 @@ export default function Addeventpage() {
                           onChange={(e) => settags(e.target.value)}
                         />
                       </div>
+                      <div>
+                        {/* tags */}
+                        <div className="tag-divit">
+                          {tags?.split(",").map((tag) => (
+                            <span
+                              onClick={() => {
+                                settags(tags.replace(tag + ",", ""));
+                              }}
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div className="confirmation">
@@ -367,16 +390,6 @@ export default function Addeventpage() {
                       </div>
                     </div>
                     <div className="con-lower">
-                      <button
-                        className="con-lower-btn eprbtn2"
-                        style={{
-                          margin: "1rem",
-                          border: "1px solid #ffbf19",
-                          background: "none",
-                        }}
-                      >
-                        Cancel Event
-                      </button>
                       <button
                         className="con-lower-btn eprbtn1"
                         style={{

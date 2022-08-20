@@ -6,9 +6,7 @@ export default function Categories() {
   const [categoryData, setCategoryData] = useState("");
   useEffect(() => {
     axios
-      .get(
-        `${process.env.REACT_APP_URL}/events/category`
-      )
+      .get(`${process.env.REACT_APP_URL}/events/category`)
       .then((data) => {
         setCategoryData(data?.data);
       })
@@ -57,19 +55,15 @@ export default function Categories() {
             <div className="fpo-card">
               <p className="fpoc-head">EVENT MANAGER</p>
               <p className="fpoc-subhead">
-                Get nearby event detail by SpeakerOre
+                Get connected to amazing speakers for your next event
               </p>
               <img
                 className="fpoc-img"
                 src={require("../images/Event Manager.png")}
                 alt={""}
               />
-              <p className="fpoc-text">
-                {" "}
-                I am willing to look for events to get an opportunity to speak
-                in one of the greatest events.
-              </p>
-              <a href="/events">
+              <p className="fpoc-text">Find the perfect speaker effortlessly</p>
+              <a href="/addevents">
                 <button className="fpoc-btn">Create Events</button>
               </a>
             </div>

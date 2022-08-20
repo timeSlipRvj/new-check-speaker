@@ -16,16 +16,16 @@ export default function Footer() {
         <ul className="firstcolumn">
           <li>
             <a href="/about">About Us</a>
-            </li>
+          </li>
           <li>
             <a href="/contact">Contact Us</a>
-            </li>
+          </li>
           <li>
             <a href="/events">Events</a>
-            </li>
+          </li>
           <li>
             <a href="/subplan">Plans</a>
-            </li>
+          </li>
         </ul>
         <ul className="secondcolumn">
           <li>
@@ -39,39 +39,47 @@ export default function Footer() {
             <a href="/faq">FAQ</a>
           </li>
           {/* </Link> */}
-          <li>Help</li>
+          {/* <li>Help</li> */}
         </ul>
+
         <ul className="thirdcolumn">
-          <li>
-            <input
-              type="text"
-              className="fp-footerinput"
-              placeholder=" Your email address"
-            />
-            <button className="fp-footerbtn" type="submit">
-              SUBSCRIBE
-            </button>
-          </li>
+          <li></li>
 
           <li>Subscribing to SpeakerOre unlocks unlimited events. </li>
           <li className="fc10">
             <span>
-              <a href="https://www.facebook.com/">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="http://www.facebook.com/speakerore"
+              >
                 <BsFacebook />
               </a>
             </span>
             <span>
-              <a href="https://www.instagram.com/">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="http://www.instagram.com/speakerore"
+              >
                 <BsInstagram />
               </a>
             </span>
             <span>
-              <a href="https://www.linkedin.com/">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.linkedin.com/in/speakerore/"
+              >
                 <BsLinkedin />
               </a>{" "}
             </span>
             <span>
-              <a href="https://twitter.com/">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="http://www.twitter.com/speakerore"
+              >
                 <BsTwitter />
               </a>
             </span>

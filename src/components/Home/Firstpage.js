@@ -12,20 +12,28 @@ export default function Firstpage() {
           <source src="./Speakerore Home Page video.mp4" type="video/mp4" />
         </video> */}
         <div className="container-video-bg">
-          <video id="bg-video"
+          <video
+            id="bg-video"
             width="100%"
             loop
             autoPlay="autoplay"
             muted
             src="./video1.mp4"
           ></video>
-          
+
           <div className="fp-text">
             <a href="/events">
               <button className="bg-btn">EXPLORE EVENTS</button>
             </a>
             <p className="one">SpeakerOre</p>
-            <p className="two">One Liner from SpeakerOre to the users</p>
+            <p className="two">
+              Direct Access to Thousands of Events to Speak at
+            </p>
+            <span className="scrolldown">
+              <a href="#section06">
+                <span></span>
+              </a>
+            </span>
           </div>
         </div>
       </div>
@@ -33,9 +41,9 @@ export default function Firstpage() {
       <Categories />
       <div className="fp-addevent">
         <p className="head1">ADD EVENT</p>
-        <p className="desc" style={{ marginBottom:"25px" }}>
-          Become a member now, and create an event as a event manager or a
-          speaker.
+        <p className="desc" style={{ marginBottom: "25px" }}>
+          Choose among the best speakers in the industry by creating an event
+          here. No charges at all.
         </p>
         {/* <h1 className="fpae-heading">features</h1> */}
         <div className="speaker">
@@ -58,7 +66,7 @@ export default function Firstpage() {
       </div>
       <div className="fp-addevent">
         <p className="head1">POPULAR UPCOMING EVENTS</p>
-        <p className="desc" style={{ marginBottom:"25px"}}>
+        <p className="desc" style={{ marginBottom: "25px" }}>
           Subscribe to us and view unlimited number of events.
         </p>
         {/* <h1 className="fpae-heading">features</h1> */}
@@ -71,14 +79,16 @@ export default function Firstpage() {
           <div className="fp-text fp-text-bg">
             <p className="fpae-imgtext">POPULAR UPCOMING EVENTS</p>
             <p className="two">
-              As a subscriber of SpeakerOre, you can browse through all the
-              upcoming events and be a speaker in them too!
+              SpeakerOre subscribers can access thousands of events across the
+              world and apply for speaking in them.
             </p>
             <a href="/events">
               <button className="bg-btn relative-up">SUBSCRIBE</button>
             </a>
           </div>
         </div>
+        <br />
+        <groovemail-form-embed permalink="NjMwMGZkNmVkMjA3ZmMwMzcwNGJhZjYy"></groovemail-form-embed>
       </div>
     </>
   );

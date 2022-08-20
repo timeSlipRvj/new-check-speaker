@@ -297,15 +297,12 @@ const Eventpage = () => {
                             >
                               <BsFillCalendarEventFill />
                             </div>
-                            <p>{data?.start_time}</p>
+                            <p>{data?.startTime}</p>
                           </span>
                           <p className="e8">ONLINE</p>
                         </div>
                         <div className="ec-section3">
-                          Tags:{" "}
-                          <p className="e4">
-                            Industry, Film, Acting, Speaking{" "}
-                          </p>
+                          Tags: <p className="e4">{data?.tags}</p>
                         </div>
                         <div className="ec-section4">{data?.description}</div>
                         <div className="ec-section5">
@@ -363,7 +360,7 @@ const Eventpage = () => {
             <div className="speaker">
               <img
                 src={require("../images/EventsPage2.png")}
-                style={{height:"100%" }}
+                style={{ height: "100%" }}
                 alt={""}
               />
               <div
@@ -395,8 +392,8 @@ const Eventpage = () => {
                   POPULAR UPCOMING EVENTS
                 </Typography>
                 <Typography style={{ color: "#ffffff" }}>
-                  As a subscriber of SpeakerOre, you can browse through all the
-                  upcoming events and be a speaker in them too!.
+                  SpeakerOre subscribers can access thousands of events across
+                  the world and apply for speaking in them.
                 </Typography>
                 <Button
                   onClick={handleOpen}

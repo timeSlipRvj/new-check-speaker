@@ -30,6 +30,7 @@ export default function Exclusiveevent() {
   const [orgExtra, setOrgExtra] = useState("");
   const [singleEventData, setSingleEventData] = useState();
   const navigate = useLocation();
+  const [eventData, setEventData] = useState();
 
   useEffect(() => {
     // console.log(navigate?.pathname);
@@ -99,6 +100,21 @@ export default function Exclusiveevent() {
     // }
   };
 
+  useEffect(() => {
+    const userToken = localStorage.getItem("@token");
+    console.log(JSON.parse(userToken).token, "hjkhkjhkh");
+    axios
+      .get(`${process.env.REACT_APP_URL}/events`, {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(userToken).token}`,
+        },
+      })
+      .then((d) => setEventData(d?.data?.filter((e) => e.isApproved)))
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <>
       <div className="mp-parent">
@@ -148,7 +164,7 @@ export default function Exclusiveevent() {
                     <BsCalendar3 />
                   </span>
                   <span>Date:</span>
-                  <span>{singleEventData?.submitted_on}</span>
+                  <span>{singleEventData?.startTime}</span>
                 </div>
                 <div
                   className="eibl-location"
@@ -164,7 +180,7 @@ export default function Exclusiveevent() {
                     <BiMap />
                   </span>
                   <span>Location:</span>
-                  <span>**{singleEventData?.country}</span>
+                  <span>{singleEventData?.location}</span>
                 </div>
                 <div className="eibl-link" style={{ marginBottom: "0.4rem" }}>
                   <span
@@ -387,629 +403,59 @@ export default function Exclusiveevent() {
 
           <div className="card-parent" style={{ padding: "0 1rem" }}>
             <div className="vc-sec">
-              <div className="event-card">
-                <div className="ec-section1">
-                  <div className="eds1-l">
-                    <p className="e1">NEW MOVIE COMMENCING IN THE NEARBY...</p>
-                    <p className="e2">New Delhi, India</p>
-                  </div>
-                  <div className="eds1-r">
-                    <BsFillBookmarkFill />
-                  </div>
-                </div>
-                <div className="ec-section2">
-                  <span>
-                    <div style={{ marginRight: "0.5rem", fontSize: "medium" }}>
-                      <BsFillCalendarEventFill />
+              {eventData &&
+                eventData?.map((data) => {
+                  return (
+                    <div className="event-card">
+                      <div className="ec-section1">
+                        <div className="eds1-l">
+                          <p className="e1">{data?.eventName}</p>
+                          <p className="e2">{data?.location}</p>
+                        </div>
+                        <div className="eds1-r">
+                          <BsFillBookmarkFill />
+                        </div>
+                      </div>
+                      <div className="ec-section2">
+                        <span>
+                          <div
+                            style={{
+                              marginRight: "0.5rem",
+                              fontSize: "medium",
+                            }}
+                          >
+                            <BsFillCalendarEventFill />
+                          </div>
+                          <p>{data?.startTime}</p>
+                        </span>
+                        <p className="e8">ONLINE</p>
+                      </div>
+                      <div className="ec-section3">
+                        Tags: <p className="e4">{data?.tags}</p>
+                      </div>
+                      <div className="ec-section4">{data?.description}</div>
+                      <div className="ec-section5">
+                        <a
+                          href={
+                            data.isExclusive
+                              ? `/exevent/${data?.id}`
+                              : `/event/${data?.id}`
+                          }
+                        >
+                          <button
+                            className="eprbtn2"
+                            style={{
+                              background: "#ffbf19",
+                              padding: "0.5rem 2rem",
+                            }}
+                          >
+                            View Details
+                          </button>
+                        </a>
+                      </div>
                     </div>
-                    <p>Date: 27th December 2021</p>
-                  </span>
-                  <p className="e8">ONLINE</p>
-                </div>
-                <div className="ec-section3">
-                  Tags: <p className="e4">Industry, Film, Acting, Speaking </p>
-                </div>
-                <div className="ec-section4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Luctus turpis turpis eu adipiscing et. Et enim amet faucibus
-                  sed gravida tristique sagittis diam, habitant. Vel morbi
-                  viverra nam ac. Justo integer lorem nisl ullamcorper sed. Quam
-                  vel placerat.
-                </div>
-                <div className="ec-section5">
-                  <button
-                    className="eprbtn2"
-                    style={{
-                      background: "#ffbf19",
-                      padding: "0.5rem 2rem",
-                    }}
-                  >
-                    View Details
-                  </button>
-                </div>
-              </div>
-              <div className="event-card">
-                <div className="ec-section1">
-                  <div className="eds1-l">
-                    <p className="e1">NEW MOVIE COMMENCING IN THE NEARBY...</p>
-                    <p className="e2">New Delhi, India</p>
-                  </div>
-                  <div className="eds1-r">
-                    <BsFillBookmarkFill />
-                  </div>
-                </div>
-                <div className="ec-section2">
-                  <span>
-                    <div style={{ marginRight: "0.5rem", fontSize: "medium" }}>
-                      <BsFillCalendarEventFill />
-                    </div>
-                    <p>Date: 27th December 2021</p>
-                  </span>
-                  <p className="e8">ONLINE</p>
-                </div>
-                <div className="ec-section3">
-                  Tags: <p className="e4">Industry, Film, Acting, Speaking </p>
-                </div>
-                <div className="ec-section4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Luctus turpis turpis eu adipiscing et. Et enim amet faucibus
-                  sed gravida tristique sagittis diam, habitant. Vel morbi
-                  viverra nam ac. Justo integer lorem nisl ullamcorper sed. Quam
-                  vel placerat.
-                </div>
-                <div className="ec-section5">
-                  <button
-                    className="eprbtn2"
-                    style={{
-                      background: "#ffbf19",
-                      padding: "0.5rem 2rem",
-                    }}
-                  >
-                    View Details
-                  </button>
-                </div>
-              </div>
-              <div className="event-card">
-                <div className="ec-section1">
-                  <div className="eds1-l">
-                    <p className="e1">NEW MOVIE COMMENCING IN THE NEARBY...</p>
-                    <p className="e2">New Delhi, India</p>
-                  </div>
-                  <div className="eds1-r">
-                    <BsFillBookmarkFill />
-                  </div>
-                </div>
-                <div className="ec-section2">
-                  <span>
-                    <div style={{ marginRight: "0.5rem", fontSize: "medium" }}>
-                      <BsFillCalendarEventFill />
-                    </div>
-                    <p>Date: 27th December 2021</p>
-                  </span>
-                  <p className="e8">ONLINE</p>
-                </div>
-                <div className="ec-section3">
-                  Tags: <p className="e4">Industry, Film, Acting, Speaking </p>
-                </div>
-                <div className="ec-section4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Luctus turpis turpis eu adipiscing et. Et enim amet faucibus
-                  sed gravida tristique sagittis diam, habitant. Vel morbi
-                  viverra nam ac. Justo integer lorem nisl ullamcorper sed. Quam
-                  vel placerat.
-                </div>
-                <div className="ec-section5">
-                  <button
-                    className="eprbtn2"
-                    style={{
-                      background: "#ffbf19",
-                      padding: "0.5rem 2rem",
-                    }}
-                  >
-                    View Details
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="vc-sec">
-              <div className="event-card">
-                <div className="ec-section1">
-                  <div className="eds1-l">
-                    <p className="e1">NEW MOVIE COMMENCING IN THE NEARBY...</p>
-                    <p className="e2">New Delhi, India</p>
-                  </div>
-                  <div className="eds1-r">
-                    <BsFillBookmarkFill />
-                  </div>
-                </div>
-                <div className="ec-section2">
-                  <span>
-                    <div style={{ marginRight: "0.5rem", fontSize: "medium" }}>
-                      <BsFillCalendarEventFill />
-                    </div>
-                    <p>Date: 27th December 2021</p>
-                  </span>
-                  <p className="e8">ONLINE</p>
-                </div>
-                <div className="ec-section3">
-                  Tags: <p className="e4">Industry, Film, Acting, Speaking </p>
-                </div>
-                <div className="ec-section4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Luctus turpis turpis eu adipiscing et. Et enim amet faucibus
-                  sed gravida tristique sagittis diam, habitant. Vel morbi
-                  viverra nam ac. Justo integer lorem nisl ullamcorper sed. Quam
-                  vel placerat.
-                </div>
-                <div className="ec-section5">
-                  <button
-                    className="eprbtn2"
-                    style={{
-                      background: "#ffbf19",
-                      padding: "0.5rem 2rem",
-                    }}
-                  >
-                    View Details
-                  </button>
-                </div>
-              </div>
-              <div className="event-card">
-                <div className="ec-section1">
-                  <div className="eds1-l">
-                    <p className="e1">NEW MOVIE COMMENCING IN THE NEARBY...</p>
-                    <p className="e2">New Delhi, India</p>
-                  </div>
-                  <div className="eds1-r">
-                    <BsFillBookmarkFill />
-                  </div>
-                </div>
-                <div className="ec-section2">
-                  <span>
-                    <div style={{ marginRight: "0.5rem", fontSize: "medium" }}>
-                      <BsFillCalendarEventFill />
-                    </div>
-                    <p>Date: 27th December 2021</p>
-                  </span>
-                  <p className="e8">ONLINE</p>
-                </div>
-                <div className="ec-section3">
-                  Tags: <p className="e4">Industry, Film, Acting, Speaking </p>
-                </div>
-                <div className="ec-section4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Luctus turpis turpis eu adipiscing et. Et enim amet faucibus
-                  sed gravida tristique sagittis diam, habitant. Vel morbi
-                  viverra nam ac. Justo integer lorem nisl ullamcorper sed. Quam
-                  vel placerat.
-                </div>
-                <div className="ec-section5">
-                  <button
-                    className="eprbtn2"
-                    style={{
-                      background: "#ffbf19",
-                      padding: "0.5rem 2rem",
-                    }}
-                  >
-                    View Details
-                  </button>
-                </div>
-              </div>
-              <div className="event-card">
-                <div className="ec-section1">
-                  <div className="eds1-l">
-                    <p className="e1">NEW MOVIE COMMENCING IN THE NEARBY...</p>
-                    <p className="e2">New Delhi, India</p>
-                  </div>
-                  <div className="eds1-r">
-                    <BsFillBookmarkFill />
-                  </div>
-                </div>
-                <div className="ec-section2">
-                  <span>
-                    <div style={{ marginRight: "0.5rem", fontSize: "medium" }}>
-                      <BsFillCalendarEventFill />
-                    </div>
-                    <p>Date: 27th December 2021</p>
-                  </span>
-                  <p className="e8">ONLINE</p>
-                </div>
-                <div className="ec-section3">
-                  Tags: <p className="e4">Industry, Film, Acting, Speaking </p>
-                </div>
-                <div className="ec-section4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Luctus turpis turpis eu adipiscing et. Et enim amet faucibus
-                  sed gravida tristique sagittis diam, habitant. Vel morbi
-                  viverra nam ac. Justo integer lorem nisl ullamcorper sed. Quam
-                  vel placerat.
-                </div>
-                <div className="ec-section5">
-                  <button
-                    className="eprbtn2"
-                    style={{
-                      background: "#ffbf19",
-                      padding: "0.5rem 2rem",
-                    }}
-                  >
-                    View Details
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="vc-sec">
-              <div className="event-card">
-                <div className="ec-section1">
-                  <div className="eds1-l">
-                    <p className="e1">NEW MOVIE COMMENCING IN THE NEARBY...</p>
-                    <p className="e2">New Delhi, India</p>
-                  </div>
-                  <div className="eds1-r">
-                    <BsFillBookmarkFill />
-                  </div>
-                </div>
-                <div className="ec-section2">
-                  <span>
-                    <div style={{ marginRight: "0.5rem", fontSize: "medium" }}>
-                      <BsFillCalendarEventFill />
-                    </div>
-                    <p>Date: 27th December 2021</p>
-                  </span>
-                  <p className="e8">ONLINE</p>
-                </div>
-                <div className="ec-section3">
-                  Tags: <p className="e4">Industry, Film, Acting, Speaking </p>
-                </div>
-                <div className="ec-section4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Luctus turpis turpis eu adipiscing et. Et enim amet faucibus
-                  sed gravida tristique sagittis diam, habitant. Vel morbi
-                  viverra nam ac. Justo integer lorem nisl ullamcorper sed. Quam
-                  vel placerat.
-                </div>
-                <div className="ec-section5">
-                  <button
-                    className="eprbtn2"
-                    style={{
-                      background: "#ffbf19",
-                      padding: "0.5rem 2rem",
-                    }}
-                  >
-                    View Details
-                  </button>
-                </div>
-              </div>
-              <div className="event-card">
-                <div className="ec-section1">
-                  <div className="eds1-l">
-                    <p className="e1">NEW MOVIE COMMENCING IN THE NEARBY...</p>
-                    <p className="e2">New Delhi, India</p>
-                  </div>
-                  <div className="eds1-r">
-                    <BsFillBookmarkFill />
-                  </div>
-                </div>
-                <div className="ec-section2">
-                  <span>
-                    <div style={{ marginRight: "0.5rem", fontSize: "medium" }}>
-                      <BsFillCalendarEventFill />
-                    </div>
-                    <p>Date: 27th December 2021</p>
-                  </span>
-                  <p className="e8">ONLINE</p>
-                </div>
-                <div className="ec-section3">
-                  Tags: <p className="e4">Industry, Film, Acting, Speaking </p>
-                </div>
-                <div className="ec-section4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Luctus turpis turpis eu adipiscing et. Et enim amet faucibus
-                  sed gravida tristique sagittis diam, habitant. Vel morbi
-                  viverra nam ac. Justo integer lorem nisl ullamcorper sed. Quam
-                  vel placerat.
-                </div>
-                <div className="ec-section5">
-                  <button
-                    className="eprbtn2"
-                    style={{
-                      background: "#ffbf19",
-                      padding: "0.5rem 2rem",
-                    }}
-                  >
-                    View Details
-                  </button>
-                </div>
-              </div>
-              <div className="event-card">
-                <div className="ec-section1">
-                  <div className="eds1-l">
-                    <p className="e1">NEW MOVIE COMMENCING IN THE NEARBY...</p>
-                    <p className="e2">New Delhi, India</p>
-                  </div>
-                  <div className="eds1-r">
-                    <BsFillBookmarkFill />
-                  </div>
-                </div>
-                <div className="ec-section2">
-                  <span>
-                    <div style={{ marginRight: "0.5rem", fontSize: "medium" }}>
-                      <BsFillCalendarEventFill />
-                    </div>
-                    <p>Date: 27th December 2021</p>
-                  </span>
-                  <p className="e8">ONLINE</p>
-                </div>
-                <div className="ec-section3">
-                  Tags: <p className="e4">Industry, Film, Acting, Speaking </p>
-                </div>
-                <div className="ec-section4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Luctus turpis turpis eu adipiscing et. Et enim amet faucibus
-                  sed gravida tristique sagittis diam, habitant. Vel morbi
-                  viverra nam ac. Justo integer lorem nisl ullamcorper sed. Quam
-                  vel placerat.
-                </div>
-                <div className="ec-section5">
-                  <button
-                    className="eprbtn2"
-                    style={{
-                      background: "#ffbf19",
-                      padding: "0.5rem 2rem",
-                    }}
-                  >
-                    View Details
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="vc-sec">
-              <div className="event-card">
-                <div className="ec-section1">
-                  <div className="eds1-l">
-                    <p className="e1">NEW MOVIE COMMENCING IN THE NEARBY...</p>
-                    <p className="e2">New Delhi, India</p>
-                  </div>
-                  <div className="eds1-r">
-                    <BsFillBookmarkFill />
-                  </div>
-                </div>
-                <div className="ec-section2">
-                  <span>
-                    <div style={{ marginRight: "0.5rem", fontSize: "medium" }}>
-                      <BsFillCalendarEventFill />
-                    </div>
-                    <p>Date: 27th December 2021</p>
-                  </span>
-                  <p className="e8">ONLINE</p>
-                </div>
-                <div className="ec-section3">
-                  Tags: <p className="e4">Industry, Film, Acting, Speaking </p>
-                </div>
-                <div className="ec-section4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Luctus turpis turpis eu adipiscing et. Et enim amet faucibus
-                  sed gravida tristique sagittis diam, habitant. Vel morbi
-                  viverra nam ac. Justo integer lorem nisl ullamcorper sed. Quam
-                  vel placerat.
-                </div>
-                <div className="ec-section5">
-                  <button
-                    className="eprbtn2"
-                    style={{
-                      background: "#ffbf19",
-                      padding: "0.5rem 2rem",
-                    }}
-                  >
-                    View Details
-                  </button>
-                </div>
-              </div>
-              <div className="event-card">
-                <div className="ec-section1">
-                  <div className="eds1-l">
-                    <p className="e1">NEW MOVIE COMMENCING IN THE NEARBY...</p>
-                    <p className="e2">New Delhi, India</p>
-                  </div>
-                  <div className="eds1-r">
-                    <BsFillBookmarkFill />
-                  </div>
-                </div>
-                <div className="ec-section2">
-                  <span>
-                    <div style={{ marginRight: "0.5rem", fontSize: "medium" }}>
-                      <BsFillCalendarEventFill />
-                    </div>
-                    <p>Date: 27th December 2021</p>
-                  </span>
-                  <p className="e8">ONLINE</p>
-                </div>
-                <div className="ec-section3">
-                  Tags: <p className="e4">Industry, Film, Acting, Speaking </p>
-                </div>
-                <div className="ec-section4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Luctus turpis turpis eu adipiscing et. Et enim amet faucibus
-                  sed gravida tristique sagittis diam, habitant. Vel morbi
-                  viverra nam ac. Justo integer lorem nisl ullamcorper sed. Quam
-                  vel placerat.
-                </div>
-                <div className="ec-section5">
-                  <button
-                    className="eprbtn2"
-                    style={{
-                      background: "#ffbf19",
-                      padding: "0.5rem 2rem",
-                    }}
-                  >
-                    View Details
-                  </button>
-                </div>
-              </div>
-              <div className="event-card">
-                <div className="ec-section1">
-                  <div className="eds1-l">
-                    <p className="e1">NEW MOVIE COMMENCING IN THE NEARBY...</p>
-                    <p className="e2">New Delhi, India</p>
-                  </div>
-                  <div className="eds1-r">
-                    <BsFillBookmarkFill />
-                  </div>
-                </div>
-                <div className="ec-section2">
-                  <span>
-                    <div style={{ marginRight: "0.5rem", fontSize: "medium" }}>
-                      <BsFillCalendarEventFill />
-                    </div>
-                    <p>Date: 27th December 2021</p>
-                  </span>
-                  <p className="e8">ONLINE</p>
-                </div>
-                <div className="ec-section3">
-                  Tags: <p className="e4">Industry, Film, Acting, Speaking </p>
-                </div>
-                <div className="ec-section4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Luctus turpis turpis eu adipiscing et. Et enim amet faucibus
-                  sed gravida tristique sagittis diam, habitant. Vel morbi
-                  viverra nam ac. Justo integer lorem nisl ullamcorper sed. Quam
-                  vel placerat.
-                </div>
-                <div className="ec-section5">
-                  <button
-                    className="eprbtn2"
-                    style={{
-                      background: "#ffbf19",
-                      padding: "0.5rem 2rem",
-                    }}
-                  >
-                    View Details
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="vc-sec">
-              <div className="event-card">
-                <div className="ec-section1">
-                  <div className="eds1-l">
-                    <p className="e1">NEW MOVIE COMMENCING IN THE NEARBY...</p>
-                    <p className="e2">New Delhi, India</p>
-                  </div>
-                  <div className="eds1-r">
-                    <BsFillBookmarkFill />
-                  </div>
-                </div>
-                <div className="ec-section2">
-                  <span>
-                    <div style={{ marginRight: "0.5rem", fontSize: "medium" }}>
-                      <BsFillCalendarEventFill />
-                    </div>
-                    <p>Date: 27th December 2021</p>
-                  </span>
-                  <p className="e8">ONLINE</p>
-                </div>
-                <div className="ec-section3">
-                  Tags: <p className="e4">Industry, Film, Acting, Speaking </p>
-                </div>
-                <div className="ec-section4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Luctus turpis turpis eu adipiscing et. Et enim amet faucibus
-                  sed gravida tristique sagittis diam, habitant. Vel morbi
-                  viverra nam ac. Justo integer lorem nisl ullamcorper sed. Quam
-                  vel placerat.
-                </div>
-                <div className="ec-section5">
-                  <button
-                    className="eprbtn2"
-                    style={{
-                      background: "#ffbf19",
-                      padding: "0.5rem 2rem",
-                    }}
-                  >
-                    View Details
-                  </button>
-                </div>
-              </div>
-              <div className="event-card">
-                <div className="ec-section1">
-                  <div className="eds1-l">
-                    <p className="e1">NEW MOVIE COMMENCING IN THE NEARBY...</p>
-                    <p className="e2">New Delhi, India</p>
-                  </div>
-                  <div className="eds1-r">
-                    <BsFillBookmarkFill />
-                  </div>
-                </div>
-                <div className="ec-section2">
-                  <span>
-                    <div style={{ marginRight: "0.5rem", fontSize: "medium" }}>
-                      <BsFillCalendarEventFill />
-                    </div>
-                    <p>Date: 27th December 2021</p>
-                  </span>
-                  <p className="e8">ONLINE</p>
-                </div>
-                <div className="ec-section3">
-                  Tags: <p className="e4">Industry, Film, Acting, Speaking </p>
-                </div>
-                <div className="ec-section4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Luctus turpis turpis eu adipiscing et. Et enim amet faucibus
-                  sed gravida tristique sagittis diam, habitant. Vel morbi
-                  viverra nam ac. Justo integer lorem nisl ullamcorper sed. Quam
-                  vel placerat.
-                </div>
-                <div className="ec-section5">
-                  <button
-                    className="eprbtn2"
-                    style={{
-                      background: "#ffbf19",
-                      padding: "0.5rem 2rem",
-                    }}
-                  >
-                    View Details
-                  </button>
-                </div>
-              </div>
-              <div className="event-card">
-                <div className="ec-section1">
-                  <div className="eds1-l">
-                    <p className="e1">NEW MOVIE COMMENCING IN THE NEARBY...</p>
-                    <p className="e2">New Delhi, India</p>
-                  </div>
-                  <div className="eds1-r">
-                    <BsFillBookmarkFill />
-                  </div>
-                </div>
-                <div className="ec-section2">
-                  <span>
-                    <div style={{ marginRight: "0.5rem", fontSize: "medium" }}>
-                      <BsFillCalendarEventFill />
-                    </div>
-                    <p>Date: 27th December 2021</p>
-                  </span>
-                  <p className="e8">ONLINE</p>
-                </div>
-                <div className="ec-section3">
-                  Tags: <p className="e4">Industry, Film, Acting, Speaking </p>
-                </div>
-                <div className="ec-section4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Luctus turpis turpis eu adipiscing et. Et enim amet faucibus
-                  sed gravida tristique sagittis diam, habitant. Vel morbi
-                  viverra nam ac. Justo integer lorem nisl ullamcorper sed. Quam
-                  vel placerat.
-                </div>
-                <div className="ec-section5">
-                  <button
-                    className="eprbtn2"
-                    style={{
-                      background: "#ffbf19",
-                      padding: "0.5rem 2rem",
-                    }}
-                  >
-                    View Details
-                  </button>
-                </div>
-              </div>
+                  );
+                })}
             </div>
           </div>
         </div>

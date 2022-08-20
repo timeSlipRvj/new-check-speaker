@@ -22,12 +22,12 @@ function Navbar(props) {
     setUserdata(JSON.parse(localStorage.getItem("@token")));
   }, []);
 
-  const [token, setToken] = useState(
-    JSON.parse(localStorage.getItem("@token"))?.token
-  );
-  useEffect(() => {
-    setToken(JSON.parse(localStorage.getItem("@token"))?.token);
-  }, []);
+  // const [token, setToken] = useState(
+  //   JSON.parse(localStorage.getItem("@token"))?.token
+  // );
+  // useEffect(() => {
+  //   setToken(JSON.parse(localStorage.getItem("@token"))?.token);
+  // }, []);
 
   const style = {
     position: "absolute",
@@ -67,13 +67,15 @@ function Navbar(props) {
             <li>
               <a href="/about">About</a>
             </li>
-            {token ? (
+            {props.auth ? (
               <li className="navright">
                 <a href="/myprofile">My Profile</a>
               </li>
             ) : (
               <li className="navright">
-                <button> <a href="/login">SignIn</a></button>
+                <button>
+                  <a href="/login">Sign In / Up</a>
+                </button>
               </li>
             )}
           </ul>

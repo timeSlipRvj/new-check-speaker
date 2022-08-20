@@ -7,8 +7,8 @@ export default function Event() {
       <div className="eventshead1">
         <p className="heading3">ADD EVENT </p>
         <p className="subhead1">
-          Become a member now, and create an event as a event manager or a
-          speaker.
+          Choose among the best speakers in the industry by creating an event
+          here. No charges at all
         </p>
         <img
           className="eventspic1"
