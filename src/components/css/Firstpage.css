@@ -151,7 +151,7 @@
 
 .scrolldown a span {
   position: absolute;
-  top: 120px;
+  top: 90px;
   left: 50%;
   width: 24px;
   height: 24px;
@@ -166,7 +166,7 @@
 }
 
 .scrolldown a {
-  padding-top: 70px;
+  padding-top: 10px;
 }
 
 @-webkit-keyframes sdb05 {

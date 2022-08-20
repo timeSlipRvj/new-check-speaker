@@ -228,6 +228,7 @@ export default function Addeventpage() {
                         <option value="Artificial Intelligence">
                           Artificial Intelligence
                         </option>
+                        <option value="Others">Others</option>
                       </select>
                       {/* <input
                         type="text"
@@ -276,7 +277,15 @@ export default function Addeventpage() {
                           marginBottom: "1rem",
                         }}
                         value={Description}
-                        onChange={(e) => setDescription(e.target.value)}
+                        onChange={(e) => {
+                          if (e.target.value.length < 300) {
+                            setDescription(e.target.value);
+                          } else {
+                            alert(
+                              "Description should be less than 300 characters"
+                            );
+                          }
+                        }}
                         res
                       ></textarea>
                       <p>Detailed Event Description</p>

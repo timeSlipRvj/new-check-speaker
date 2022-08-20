@@ -243,6 +243,7 @@
 }
 
 .col-first p {
+  text-align: justify;
   color: #000 !important;
   font-size: medium;
   font-weight: 500;
