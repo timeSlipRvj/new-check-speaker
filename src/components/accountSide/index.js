@@ -167,7 +167,7 @@ export default function Index() {
               <span onClick={() => setTabs(4)}>EVENT REQUESTS</span>
             </div>
           )}
-          {userdata?.role === "MODERATOR" && (
+          {/* {userdata?.role === "MODERATOR" && (
             <div className={tabs === 5 ? "cdrow active-tab" : "cdrow"}>
               <div className="cdr-box"></div>
               <span onClick={() => setTabs(5)}>ARCHIVED PLANS</span>
@@ -185,7 +185,7 @@ export default function Index() {
               <div className="cdr-box"></div>
               <span onClick={() => setTabs(7)}>FLAGGED SECTION</span>
             </div>
-          )}
+          )} */}
           {userdata?.role === "USER" && (
             <div className={tabs === 3 ? "cdrow active-tab" : "cdrow"}>
               <div className="cdr-box"></div>
@@ -486,7 +486,7 @@ export default function Index() {
                   return (
                     <div key={data?.id} className="md-card-parent">
                       <div className="mdcp-header">
-                        <h4>{data?.name}</h4>
+                        <h4>{data?.eventName}</h4>
                         <div>
                           <BsChevronDown />
                         </div>
@@ -506,7 +506,7 @@ export default function Index() {
                             >
                               <BsCalendar3 />
                             </span>
-                            <span>{data?.start_time}</span>
+                            <span>{data?.startTime}</span>
                           </div>
                           <div
                             className="eibl-location"
@@ -521,7 +521,7 @@ export default function Index() {
                             >
                               <BiMap />
                             </span>
-                            <span>{data?.state}</span>
+                            <span>{data?.location}</span>
                           </div>
                         </div>
                         <div style={{}}>{data?.mode}</div>
