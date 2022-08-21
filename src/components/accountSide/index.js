@@ -5,6 +5,13 @@ import { BsChevronDown, BsCalendar3 } from "react-icons/bs";
 import { BiMap } from "react-icons/bi";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import {
+  BsChevronRight,
+  BsFillBookmarkFill,
+  BsFillCalendarEventFill,
+  BsChevronLeft,
+} from "react-icons/bs";
+import "../css/eventpage.css";
 
 export default function Index() {
   const [tabs, setTabs] = useState(0);
@@ -23,6 +30,27 @@ export default function Index() {
     setImages(URL.createObjectURL(event.target.files[0]));
   };
 
+  const [allApprovedEvents, setAllApprovedEvents] = useState([]);
+  const [fromTime, setFromTime] = useState("");
+  const [toTime, setToTime] = useState("");
+  const [sortedEvents, setSortedEvents] = useState([]);
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    if (!(fromTime == "" || toTime == "")) {
+      setSortedEvents(
+        events?.filter((event) => {
+          return (
+            new Date(event.startTime) >= new Date(fromTime) &&
+            new Date(event.startTime) <= new Date(toTime)
+          );
+        })
+      );
+    }
+  }, [fromTime, toTime]);
+
+  console.log(sortedEvents, "sortedEvents");
+
   const fetchEvents = () => {
     axios
       .get(`${process.env.REACT_APP_URL}/events`, {
@@ -34,6 +62,20 @@ export default function Index() {
         console.log(data?.data);
         const dd = data?.data?.filter((data) => data?.isApproved == false);
         setFilterData(dd);
+        setAllApprovedEvents(
+          data?.data?.filter((data) => data?.isApproved == true)
+        );
+        setEvents(data?.data.reverse());
+        setSortedEvents(
+          data?.data
+            ?.filter((event) => {
+              return (
+                new Date(event.startTime) >= new Date("1111-01-01") &&
+                new Date(event.startTime) <= new Date("7111-01-01")
+              );
+            })
+            .reverse()
+        );
       })
       .catch((err) => {
         console.log(err);
@@ -167,12 +209,17 @@ export default function Index() {
               <span onClick={() => setTabs(4)}>EVENT REQUESTS</span>
             </div>
           )}
-          {/* {userdata?.role === "MODERATOR" && (
+          <div className={tabs === 9 ? "cdrow active-tab" : "cdrow"}>
+            <div className="cdr-box"></div>
+            <span onClick={() => setTabs(9)}>MY EVENTS</span>
+          </div>
+          {(userdata?.role === "MODERATOR" || userdata?.role === "TEAM") && (
             <div className={tabs === 5 ? "cdrow active-tab" : "cdrow"}>
               <div className="cdr-box"></div>
-              <span onClick={() => setTabs(5)}>ARCHIVED PLANS</span>
+              <span onClick={() => setTabs(5)}>ARCHIVED EVENTS</span>
             </div>
           )}
+          {/*
           {userdata?.role === "MODERATOR" && (
             <div className={tabs === 6 ? "cdrow active-tab" : "cdrow"}>
               <div className="cdr-box"></div>
@@ -488,7 +535,13 @@ export default function Index() {
                       <div className="mdcp-header">
                         <h4>{data?.eventName}</h4>
                         <div>
-                          <BsChevronDown />
+                          <a
+                            href={`/event/${data?.id}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <BsChevronDown />
+                          </a>
                         </div>
                       </div>
                       <div className="mdcp-body">
@@ -552,7 +605,202 @@ export default function Index() {
             </div>
           </div>
         )}
+
         {tabs === 5 && (
+          <div className="mpl-right">
+            <div className="md-header mpl-heading">
+              <p>ARCHIEVE PLANS</p>
+            </div>
+            <div
+              className="st-lower"
+              style={{
+                marginLeft: "1.5rem",
+              }}
+            >
+              <div className="stl-child"></div>
+              <div className="stl-child">
+                <p className="stlc-text">from: </p>
+
+                <input
+                  type="date"
+                  className=" stlc-field"
+                  style={{
+                    background: "#e4e4e4",
+                    color: "#000",
+                  }}
+                  placeholder="dd/mm/yyyy"
+                  onChange={(e) => {
+                    setFromTime(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="stl-child">
+                <p className="stlc-text">to: </p>
+
+                <input
+                  type="date"
+                  className=" stlc-field"
+                  style={{
+                    background: "#e4e4e4",
+                    color: "#000",
+                  }}
+                  placeholder="dd/mm/yyyy"
+                  onChange={(e) => {
+                    setToTime(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
+
+            <div
+              style={{
+                margin: "1.5rem",
+              }}
+              className="view-event"
+            >
+              <div className="vc-sec">
+                {sortedEvents &&
+                  sortedEvents?.map((data) => {
+                    return (
+                      <div className="event-card">
+                        <div className="ec-section1">
+                          <div className="eds1-l">
+                            <p className="e1">{data?.eventName}</p>
+                            <p className="e2">{data?.location}</p>
+                          </div>
+                          <div className="eds1-r">
+                            {/* <BsFillBookmarkFill /> */}
+                            {data.isExclusive ? (
+                              <img
+                                src={require("../images/exclusiveEvent.png")}
+                                alt={""}
+                                style={{ width: "40px" }}
+                              />
+                            ) : null}
+                          </div>
+                        </div>
+                        <div className="ec-section2">
+                          <span>
+                            <div
+                              style={{
+                                marginRight: "0.5rem",
+                                fontSize: "medium",
+                              }}
+                            >
+                              <BsFillCalendarEventFill />
+                            </div>
+                            <p>{data?.startTime}</p>
+                          </span>
+                          <p className="e8">{data?.mode}</p>
+                        </div>
+                        <div className="ec-section3">
+                          Tags: <p className="e4">{data?.tags}</p>
+                        </div>
+                        <div className="ec-section4">{data?.description}</div>
+                        <div className="ec-section5">
+                          <a
+                            href={
+                              data.isExclusive
+                                ? `/exevent/${data?.id}`
+                                : `/event/${data?.id}`
+                            }
+                          >
+                            <button
+                              className="eprbtn2"
+                              style={{
+                                background: "#ffbf19",
+                                padding: "0.5rem 2rem",
+                              }}
+                            >
+                              View Details
+                            </button>
+                          </a>
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
+            </div>
+          </div>
+        )}
+        {tabs === 9 && (
+          <div className="mpl-right">
+            <div className="md-header mpl-heading">
+              <p>My Events</p>
+            </div>
+
+            <div
+              style={{
+                margin: "1.5rem",
+              }}
+              className="view-event"
+            >
+              <div className="vc-sec">
+                {allApprovedEvents &&
+                  allApprovedEvents?.map((data) => {
+                    return (
+                      <div className="event-card">
+                        <div className="ec-section1">
+                          <div className="eds1-l">
+                            <p className="e1">{data?.eventName}</p>
+                            <p className="e2">{data?.location}</p>
+                          </div>
+                          <div className="eds1-r">
+                            {/* <BsFillBookmarkFill /> */}
+                            {data.isExclusive ? (
+                              <img
+                                src={require("../images/exclusiveEvent.png")}
+                                alt={""}
+                                style={{ width: "40px" }}
+                              />
+                            ) : null}
+                          </div>
+                        </div>
+                        <div className="ec-section2">
+                          <span>
+                            <div
+                              style={{
+                                marginRight: "0.5rem",
+                                fontSize: "medium",
+                              }}
+                            >
+                              <BsFillCalendarEventFill />
+                            </div>
+                            <p>{data?.startTime}</p>
+                          </span>
+                          <p className="e8">{data?.mode}</p>
+                        </div>
+                        <div className="ec-section3">
+                          Tags: <p className="e4">{data?.tags}</p>
+                        </div>
+                        <div className="ec-section4">{data?.description}</div>
+                        <div className="ec-section5">
+                          <a
+                            href={
+                              data.isExclusive
+                                ? `/exevent/${data?.id}`
+                                : `/event/${data?.id}`
+                            }
+                          >
+                            <button
+                              className="eprbtn2"
+                              style={{
+                                background: "#ffbf19",
+                                padding: "0.5rem 2rem",
+                              }}
+                            >
+                              View Details
+                            </button>
+                          </a>
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
+            </div>
+          </div>
+        )}
+        {/* {tabs === 5 && (
           <div className="mpl-right">
             <div className="md-header mpl-heading">
               <p>ARCHIEVE PLANS</p>
@@ -895,7 +1143,7 @@ export default function Index() {
               </div>
             </div>
           </div>
-        )}
+        )} */}
         {tabs === 7 && (
           <div className="mpl-right">
             <div className="md-header mpl-heading">

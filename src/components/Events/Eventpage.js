@@ -63,14 +63,14 @@ const Eventpage = () => {
     } else if (sortBy === "near") {
       // nearest date first
       setSearchResults(
-        eventData?.sort((b, a) => {
+        [...eventData]?.sort((a, b) => {
           return new Date(a.startTime) - new Date(b.startTime);
         })
       );
     } else if (sortBy === "far") {
       // farthest date first
       setSearchResults(
-        eventData?.sort((b, a) => {
+        [...eventData]?.sort((a, b) => {
           return new Date(b.startTime) - new Date(a.startTime);
         })
       );
@@ -79,7 +79,7 @@ const Eventpage = () => {
 
   const searchItems = (term, arr) => {
     return arr?.filter((item) => {
-      return item.eventName?.toLowerCase().includes(term.toLowerCase());
+      return JSON.stringify(item)?.toLowerCase().includes(term.toLowerCase());
     });
   };
   console.log(search);

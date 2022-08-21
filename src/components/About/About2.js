@@ -1,7 +1,7 @@
 import React from "react";
 import LoggedInSidebar from "../accountSide/LoggedInSidebar";
 import "../css/About2.css";
-import Culture from "../images/cul.png";
+import Culture from "../images/AboutUs.png";
 
 import TeamMembers from "../Team/TeamMembers";
 
