@@ -35,6 +35,7 @@ import Exevent from "./components/Events/Exevents";
 import Faq from "./components/FAQ/Faq";
 import { Task } from "@mui/icons-material";
 import { useState } from "react";
+import Contact from "./components/About/contact";
 
 function PrivateRoute({ component: Component, ...rest }) {
   let auth = JSON.parse(localStorage.getItem("@token"))?.token;
@@ -90,6 +91,7 @@ const App = () => {
           <Route path="/subplan" element={<SubPlan />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/contact" element={<Contact />} />
 
           {/* <Route path="/bill" element={<BillingInformation />} />
           <Route

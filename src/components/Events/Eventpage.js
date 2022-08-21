@@ -17,15 +17,18 @@ import Navbar from "../Header/Navbar";
 import PurchaseError from "../../ErrorPages/purchaseError";
 
 const Eventpage = () => {
-  console.log(JSON.parse(localStorage.getItem("@token")));
   const { userdata } = JSON.parse(localStorage.getItem("@token"));
 
+  const [mode, setMode] = useState();
   const [search, setSearch] = useState("");
   const [isExclusive, setisExclusive] = useState(false);
   const [eventData, setEventData] = useState();
   const userToken = JSON.parse(localStorage.getItem("@token"));
   const [startTime, setstart_time] = useState("");
   const [endTime, setendTime] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [category, setCategory] = useState("");
+  const [sortBy, setSortBy] = useState("");
 
   const userEvents = () => {
     axios
@@ -35,22 +38,85 @@ const Eventpage = () => {
         },
       })
       .then((d) => {
-        setEventData(d?.data?.filter((e) => e.isApproved));
+        setEventData(
+          d?.data
+            ?.filter((e) => e.isApproved)
+            .reverse()
+            ?.filter((e) => new Date(e.endTime) > new Date())
+        );
+        setSearchResults(
+          d?.data
+            ?.filter((e) => e.isApproved)
+            .reverse()
+            ?.filter((e) => new Date(e.endTime) > new Date())
+        );
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
+  useEffect(() => {
+    console.log(sortBy);
+    if (sortBy === "new") {
+      setSearchResults(eventData);
+    } else if (sortBy === "near") {
+      // nearest date first
+      setSearchResults(
+        eventData?.sort((b, a) => {
+          return new Date(a.startTime) - new Date(b.startTime);
+        })
+      );
+    } else if (sortBy === "far") {
+      // farthest date first
+      setSearchResults(
+        eventData?.sort((b, a) => {
+          return new Date(b.startTime) - new Date(a.startTime);
+        })
+      );
+    }
+  }, [sortBy]);
+
+  const searchItems = (term, arr) => {
+    return arr?.filter((item) => {
+      return item.eventName?.toLowerCase().includes(term.toLowerCase());
+    });
+  };
+  console.log(search);
+
+  useEffect(() => {
+    let result = searchItems(search, eventData);
+    console.log(result);
+    setSearchResults(result);
+  }, [search]);
+
+  useEffect(() => {
+    // check mode
+    if (mode === "All") {
+      setSearchResults(eventData);
+    } else setSearchResults(eventData?.filter((e) => e.mode === mode));
+  }, [mode]);
+
+  useEffect(() => {
+    // check category
+    if (category === "All") {
+      setSearchResults(eventData);
+    } else
+      setSearchResults(
+        eventData?.filter((e) =>
+          e.categories.toLowerCase().includes(category.toLocaleLowerCase())
+        )
+      );
+  }, [category]);
+
   var resultProductData = eventData?.filter((a) => {
     var date = new Date(a.start_time);
     return date >= startTime && date <= endTime;
   });
-  console.log(resultProductData);
 
   useEffect(() => {
     if (isExclusive) {
-      setEventData(eventData?.filter((e) => e.isExclusive));
+      setSearchResults(eventData?.filter((e) => e.isExclusive));
     } else {
       userEvents();
     }
@@ -109,9 +175,6 @@ const Eventpage = () => {
   // var aquaticCreature1s = eventData?.filter(function (creature) {
   //   return creature.mode === mode;
   // });
-  const [mode, setMode] = useState();
-
-  console.log(eventData, "asdfghjkl");
 
   // Modal Style
   const style = {
@@ -158,7 +221,6 @@ const Eventpage = () => {
     <>
       <ToastContainer />
       <div className="mp-parent" style={{ background: "none", marginTop: "0" }}>
-        {console.log(userdata?.role, userdata?.subscribed)}
         {userdata?.subscribed === "true" || userdata.subscribed === true ? (
           <div className="mp-left">
             <div className="search-ticket">
@@ -211,8 +273,9 @@ const Eventpage = () => {
                     onChange={(e) => setMode(e.target.value)}
                     value={mode}
                   >
-                    <option value="Online">offline</option>
-                    <option value="Offline">online</option>
+                    <option value="All">All</option>
+                    <option value="Online">Online</option>
+                    <option value="Offline">Offline</option>
                     <option value="Hybrid">Hybrid</option>
                   </select>
                 </div>
@@ -225,8 +288,9 @@ const Eventpage = () => {
                       paddingBottom: "0",
                       color: "grey",
                     }}
+                    onChange={(e) => setCategory(e.target.value)}
                   >
-                    <option value="" selected>
+                    <option value="All" selected>
                       Choose Category
                     </option>
                     <option value="Business">Business</option>
@@ -268,46 +332,29 @@ const Eventpage = () => {
                 </div>
 
                 <div className="stl-child">
-                  <p className="stlc-text">from: </p>
-
-                  <input
-                    type="date"
-                    className=" stlc-field"
-                    placeholder="dd/mm/yyyy"
-                    onChange={(e) => setstart_time(e.target.value)}
-                    value={startTime}
-                  />
-                  {console.log(startTime, "startTimestartTime")}
-                </div>
-                <div className="stl-child">
-                  <p className="stlc-text">to: </p>
-
-                  <input
-                    type="date"
-                    className=" stlc-field"
-                    placeholder="dd/mm/yyyy"
-                    onChange={(e) => setendTime(e.target.value)}
-                    value={endTime}
-                  />
-                </div>
-                <div className="stl-child">
-                  <button
+                  {/* sort by  */}
+                  <p className="stlc-text">Sort: </p>
+                  <select
+                    className="stlc-field "
                     style={{
-                      marginLeft: "35px",
-                      height: "45px",
-                      width: "99px",
+                      paddingTop: "0",
+                      paddingBottom: "0",
+                      color: "grey",
                     }}
+                    onChange={(e) => setSortBy(e.target.value)}
                   >
-                    Search
-                  </button>
+                    <option value="new">Newest</option>
+                    <option value="near">Nearest (Date)</option>
+                    <option value="far">Farthest (Date)</option>
+                  </select>
                 </div>
               </div>
             </div>
 
             <div className="view-event">
               <div className="vc-sec">
-                {eventData &&
-                  eventData?.map((data) => {
+                {searchResults &&
+                  searchResults?.map((data) => {
                     return (
                       <div className="event-card">
                         <div className="ec-section1">
@@ -316,7 +363,14 @@ const Eventpage = () => {
                             <p className="e2">{data?.location}</p>
                           </div>
                           <div className="eds1-r">
-                            <BsFillBookmarkFill />
+                            {/* <BsFillBookmarkFill /> */}
+                            {data.isExclusive ? (
+                              <img
+                                src={require("../images/exclusiveEvent.png")}
+                                alt={""}
+                                style={{ width: "40px" }}
+                              />
+                            ) : null}
                           </div>
                         </div>
                         <div className="ec-section2">
@@ -331,7 +385,7 @@ const Eventpage = () => {
                             </div>
                             <p>{data?.startTime}</p>
                           </span>
-                          <p className="e8">ONLINE</p>
+                          <p className="e8">{data?.mode}</p>
                         </div>
                         <div className="ec-section3">
                           Tags: <p className="e4">{data?.tags}</p>
@@ -361,7 +415,7 @@ const Eventpage = () => {
                   })}
               </div>
 
-              {eventData?.length > 9 && (
+              {searchResults?.length > 9 && (
                 <div className="event-nav-bottom">
                   <div className="enav-prev">
                     <span className="enb-icon">

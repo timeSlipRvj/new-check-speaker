@@ -45,7 +45,7 @@ function Navbar(props) {
       <div className="container">
         <div className="logo">
           <a href="/">
-            <img src={require("../images/logo.jpg")} alt={""} />
+            <img src={require("../images/logo.png")} alt={""} />
           </a>
         </div>
         <div>
