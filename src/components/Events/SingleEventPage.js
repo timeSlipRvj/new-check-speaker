@@ -82,14 +82,14 @@ export default function SingleEventPage() {
                 <span>Back to Events Search </span>
               </button>
             </a>
-            <div>
+            {/* <div>
               <div>
                 <BsFlag />
               </div>
               <div>
                 <BsBookmark />
               </div>
-            </div>
+            </div> */}
           </div>
           <div
             className="sep-einfo-body"

@@ -165,6 +165,25 @@ const Eventpage = () => {
       });
   };
 
+  const deleteTheEvent = async (id) => {
+    // alert for confirmation
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this event?"
+    );
+    if (confirmed) {
+      let res = await axios.post(
+        `${process.env.REACT_APP_URL}/events/eventremove`,
+        {
+          id,
+        }
+      );
+      if (res.status === 200) {
+        alert("Event deleted successfully");
+        userEvents();
+      }
+    }
+  };
+
   // const filteredCountries = eventData?.filter((country) => {
   //   return country.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
   // });
@@ -409,6 +428,20 @@ const Eventpage = () => {
                               View Details
                             </button>
                           </a>
+                          {userdata && userdata.role === "MODERATOR" ? (
+                            <button
+                              className="eprbtn2"
+                              style={{
+                                background: "red",
+                                padding: "0.5rem 2rem",
+                              }}
+                              onClick={() => {
+                                deleteTheEvent(data?.id);
+                              }}
+                            >
+                              Remove
+                            </button>
+                          ) : null}
                         </div>
                       </div>
                     );

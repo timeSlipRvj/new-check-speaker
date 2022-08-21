@@ -39,12 +39,21 @@ export default function Index() {
   useEffect(() => {
     if (!(fromTime == "" || toTime == "")) {
       setSortedEvents(
-        events?.filter((event) => {
-          return (
-            new Date(event.startTime) >= new Date(fromTime) &&
-            new Date(event.startTime) <= new Date(toTime)
-          );
-        })
+        events
+          ?.filter((event) => {
+            return (
+              new Date(event.startTime) >= new Date(fromTime) &&
+              new Date(event.startTime) <= new Date(toTime)
+            );
+          })
+          .filter(
+            (data) =>
+              data?.isApproved == true &&
+              new Date(data?.startTime) <= new Date()
+          )
+          .sort((a, b) => {
+            return new Date(a.startTime) - new Date(b.startTime);
+          })
       );
     }
   }, [fromTime, toTime]);
@@ -65,7 +74,18 @@ export default function Index() {
         setAllApprovedEvents(
           data?.data?.filter((data) => data?.isApproved == true)
         );
-        setEvents(data?.data.reverse());
+        setEvents(
+          data?.data
+            .reverse()
+            .filter(
+              (data) =>
+                data?.isApproved == true &&
+                new Date(data?.startTime) <= new Date()
+            )
+            .sort((a, b) => {
+              return new Date(a.startTime) - new Date(b.startTime);
+            })
+        );
         setSortedEvents(
           data?.data
             ?.filter((event) => {
@@ -75,6 +95,14 @@ export default function Index() {
               );
             })
             .reverse()
+            .filter(
+              (data) =>
+                data?.isApproved == true &&
+                new Date(data?.startTime) <= new Date()
+            )
+            .sort((a, b) => {
+              return new Date(a.startTime) - new Date(b.startTime);
+            })
         );
       })
       .catch((err) => {
