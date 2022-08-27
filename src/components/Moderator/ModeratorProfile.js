@@ -35,7 +35,7 @@ export default function ModeratorProfile() {
                 <div className="cdr-box"></div>
                 <span>SUBSCRIPTION PLANS</span>
               </div>
-            
+
               <div className="cdrow">
                 <div className="cdr-box"></div>
                 <span>FLAGGED SECTION</span>
@@ -104,7 +104,7 @@ export default function ModeratorProfile() {
             <div className="mpl-right">
               <div className="mpl-heading">
                 <p>Event Details</p>
-                <button>Show previous events hosted</button>
+                {/* <button>Show previous events hosted</button> */}
               </div>
               <div className="mplower-body">
                 <div className="mpedit-section">
@@ -245,26 +245,47 @@ export default function ModeratorProfile() {
                 </div>
                 <div className="confirmation">
                   <div className="con-upper">
-                  <input type="checkbox" style={{position:'initial'}} className="apply1" name="apply1"/>
-                  <div className="conu-text">
-                  <h4>Apply for SpeakerOre Exclusive</h4>
-                  <span>Events only for SpeakerOre subscribers. All the speaker in these events will be selected among speakers or members.</span>
-                  </div>
+                    <input
+                      type="checkbox"
+                      style={{ position: "initial" }}
+                      className="apply1"
+                      name="apply1"
+                    />
+                    <div className="conu-text">
+                      <h4>Apply for SpeakerOre Exclusive</h4>
+                      <span>
+                        Events only for SpeakerOre subscribers. All the speaker
+                        in these events will be selected among speakers or
+                        members.
+                      </span>
+                    </div>
                   </div>
                   <div className="con-lower">
-                        <button className="con-lower-btn eprbtn2" style={{
-                            margin: '1rem', border:'1px solid #ffbf19',background:'none'
-                        }}>Cancel Event</button>
-                        <button className="con-lower-btn eprbtn1" style={{
-                            margin: '1rem'
-                        }}>Add Event</button>
+                    <button
+                      className="con-lower-btn eprbtn2"
+                      style={{
+                        margin: "1rem",
+                        border: "1px solid #ffbf19",
+                        background: "none",
+                      }}
+                    >
+                      Cancel Event
+                    </button>
+                    <button
+                      className="con-lower-btn eprbtn1"
+                      style={{
+                        margin: "1rem",
+                      }}
+                    >
+                      Add Event
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-     <LoggedInSidebar />
+        <LoggedInSidebar />
       </div>
     </>
   );

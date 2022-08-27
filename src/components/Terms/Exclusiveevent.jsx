@@ -380,16 +380,6 @@ export default function Exclusiveevent() {
                     </div>
                     <div className="con-lower">
                       <button
-                        className="con-lower-btn eprbtn2"
-                        style={{
-                          margin: "1rem",
-                          border: "1px solid #ffbf19",
-                          background: "none",
-                        }}
-                      >
-                        CANCLE MAIL
-                      </button>
-                      <button
                         className="con-lower-btn eprbtn1"
                         style={{
                           margin: "1rem",

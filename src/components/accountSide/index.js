@@ -72,7 +72,9 @@ export default function Index() {
         const dd = data?.data?.filter((data) => data?.isApproved == false);
         setFilterData(dd);
         setAllApprovedEvents(
-          data?.data?.filter((data) => data?.isApproved == true)
+          data?.data?.filter(
+            (data) => data?.isApproved == true && data?.userId == userdata?.id
+          )
         );
         setEvents(
           data?.data
@@ -563,6 +565,14 @@ export default function Index() {
                       <div className="mdcp-header">
                         <h4>{data?.eventName}</h4>
                         <div>
+                          {data.isExclusive ? (
+                            <img
+                              src={require("../images/exclusiveEvent.png")}
+                              alt={""}
+                              style={{ width: "40px" }}
+                            />
+                          ) : null}
+                          &nbsp;
                           <a
                             href={`/event/${data?.id}`}
                             target="_blank"

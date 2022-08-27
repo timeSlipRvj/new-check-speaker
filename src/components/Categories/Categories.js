@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "../css/category.css";
 import { catData } from "./categories_data.js";
+import videocat from "../images/SpeakerOreCategories.mp4";
 export default function Categories() {
   const [categoryData, setCategoryData] = useState("");
   useEffect(() => {
@@ -17,6 +18,11 @@ export default function Categories() {
       <div className="category">
         <p className="head1">CATEGORIES</p>
         <p className="desc">WIDE RANGE OF CATEGORIES FOR SPEAKERORE USERS</p>
+        <center>
+          <video autoPlay loop muted className="video" width="80%">
+            <source src={videocat} type="video/mp4" />
+          </video>
+        </center>
         <div className="catcards">
           <div className="catcards-section">
             {catData &&

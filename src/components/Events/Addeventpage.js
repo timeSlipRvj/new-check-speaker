@@ -85,7 +85,7 @@ export default function Addeventpage() {
               <div className="mpl-right">
                 <div className="mpl-heading">
                   <p>Event Details</p>
-                  <button>Show previous events hosted</button>
+                  {/* <button>Show previous events hosted</button> */}
                 </div>
                 <div className="mplower-body">
                   <div className="mpedit-section">
@@ -166,7 +166,7 @@ export default function Addeventpage() {
                       <input
                         type="url"
                         className="mpes-input"
-                        placeholder="Write Here"
+                        placeholder="https://example.com"
                         onChange={(e) => setEventSite(e.target.value)}
                         value={eventSite}
                       />
@@ -265,7 +265,7 @@ export default function Addeventpage() {
                     </div>
 
                     <div className="mpes-form">
-                      <p>Event Description (300 Characters) </p>
+                      <p>Event Description (150 Characters) </p>
                       <textarea
                         rows="4"
                         cols="46"
@@ -278,11 +278,11 @@ export default function Addeventpage() {
                         }}
                         value={Description}
                         onChange={(e) => {
-                          if (e.target.value.length < 300) {
+                          if (e.target.value.length < 150) {
                             setDescription(e.target.value);
                           } else {
                             alert(
-                              "Description should be less than 300 characters"
+                              "Description should be less than 150 characters"
                             );
                           }
                         }}

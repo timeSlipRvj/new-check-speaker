@@ -448,7 +448,7 @@ const Eventpage = () => {
                   })}
               </div>
 
-              {searchResults?.length > 9 && (
+              {/* {searchResults?.length > 9 && (
                 <div className="event-nav-bottom">
                   <div className="enav-prev">
                     <span className="enb-icon">
@@ -471,7 +471,7 @@ const Eventpage = () => {
                     </span>
                   </div>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         ) : (

@@ -686,7 +686,7 @@ export default function ModeratorDummy3() {
             <div className="mpl-right">
               <div className="mpl-heading">
                 <p>Event Details</p>
-                <button>Show previous events hosted</button>
+                {/* <button>Show previous events hosted</button> */}
               </div>
               <div className="mplower-body">
                 <div className="mpedit-section">
@@ -867,7 +867,7 @@ export default function ModeratorDummy3() {
             </div>
           </div>
         </div>
-     <LoggedInSidebar />
+        <LoggedInSidebar />
       </div>
     </>
   );
