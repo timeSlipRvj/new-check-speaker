@@ -75,7 +75,7 @@ export default function ModeratorDummy1() {
                     <option value="Online" selected>
                       Conference
                     </option>
-                    <option value="Offline">Offline</option>
+                    <option value="Offline">In-Person</option>
                   </select>
                 </div>
                 <div className="stl-child">
@@ -93,7 +93,7 @@ export default function ModeratorDummy1() {
                     <option value="Online" selected>
                       Conference
                     </option>
-                    <option value="Offline">Offline</option>
+                    <option value="Offline">In-Person</option>
                   </select>
                 </div>
                 <div className="stl-child">
@@ -433,7 +433,7 @@ export default function ModeratorDummy1() {
                         Choose Mode
                       </option>
                       <option value="Online">Online</option>
-                      <option value="Offline">Offline</option>
+                      <option value="Offline">In-Person</option>
                     </select>
                     <p>Location</p>
                     <input
@@ -466,7 +466,7 @@ export default function ModeratorDummy1() {
                       <option value="Online" selected>
                         Paid
                       </option>
-                      <option value="Offline">Offline</option>
+                      <option value="Offline">In-Person</option>
                     </select>
                   </div>
                   <div className="mpes-form">
@@ -516,7 +516,7 @@ export default function ModeratorDummy1() {
                       <option value="Online" selected>
                         Conference
                       </option>
-                      <option value="Offline">Offline</option>
+                      <option value="Offline">In-Person</option>
                     </select>
                     <p>Audience Type</p>
                     <input

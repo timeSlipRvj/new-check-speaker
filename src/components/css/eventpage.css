@@ -115,6 +115,7 @@
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 0.8rem;
+  height: 60px;
 }
 .ec-section1 .eds1-l .e1 {
   font-weight: 600;

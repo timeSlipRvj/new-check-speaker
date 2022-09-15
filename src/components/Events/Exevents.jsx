@@ -224,8 +224,8 @@ const Exevent = () => {
                     onChange={(e) => setMode(e.target.value)}
                     value={mode}
                   >
-                    <option value="Online">offline</option>
-                    <option value="Offline">online</option>
+                    <option value="Online">Online</option>
+                    <option value="Offline">In-Person</option>
                   </select>
                 </div>
                 <div className="stl-child">
@@ -244,7 +244,7 @@ const Exevent = () => {
                     <option value="Online" selected>
                       Conference
                     </option>
-                    <option value="Offline">Offline</option>
+                    <option value="Offline">In-Person</option>
                   </select>
                 </div>
 

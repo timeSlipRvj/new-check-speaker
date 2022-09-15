@@ -294,7 +294,7 @@ const Eventpage = () => {
                   >
                     <option value="All">All</option>
                     <option value="Online">Online</option>
-                    <option value="Offline">Offline</option>
+                    <option value="Offline">In-Person</option>
                     <option value="Hybrid">Hybrid</option>
                   </select>
                 </div>
@@ -404,7 +404,9 @@ const Eventpage = () => {
                             </div>
                             <p>{data?.startTime}</p>
                           </span>
-                          <p className="e8">{data?.mode}</p>
+                          <p className="e8">
+                            {data?.mode == "Offline" ? "In-Person" : data?.mode}
+                          </p>
                         </div>
                         <div className="ec-section3">
                           Tags: <p className="e4">{data?.tags}</p>

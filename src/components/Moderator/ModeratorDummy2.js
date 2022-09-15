@@ -75,7 +75,7 @@ export default function ModeratorDummy2() {
                     <option value="Online" selected>
                       Conference
                     </option>
-                    <option value="Offline">Offline</option>
+                    <option value="Offline">In-Person</option>
                   </select>
                 </div>
                 <div className="stl-child">
@@ -93,7 +93,7 @@ export default function ModeratorDummy2() {
                     <option value="Online" selected>
                       Conference
                     </option>
-                    <option value="Offline">Offline</option>
+                    <option value="Offline">In-Person</option>
                   </select>
                 </div>
                 <div className="stl-child">
@@ -124,276 +124,264 @@ export default function ModeratorDummy2() {
                 </div>
               </div>
               <div className="mpedit-section">
-                  <div className="md-card-parent">
-                    <div className="mdcp-header">
-                      <h4>EVENT NAME HERE TILL HERE...</h4>
-                      <div>
-                        <BsChevronDown />
-                      </div>
-                    </div>
-                    <div className="mdcp-body">
-                      <div>
-                        <div
-                          className="eibl-date"
-                          style={{ marginBottom: "0.4rem" }}
-                        >
-                          <span
-                            style={{
-                              position: "relative",
-                              top: "3px",
-                              marginLeft: "0",
-                            }}
-                          >
-                            <BsCalendar3 />
-                          </span>
-                          <span>29th Dec’2021</span>
-                        </div>
-                        <div
-                          className="eibl-location"
-                          style={{ marginBottom: "0.4rem" }}
-                        >
-                          <span
-                            style={{
-                              position: "relative",
-                              top: "3px",
-                              marginLeft: "0",
-                            }}
-                          >
-                            <BiMap />
-                          </span>
-                          <span>New Delhi</span>
-                        </div>
-                      </div>
-                      <div style={{}}>
-                        ONLINE
-                      </div>
+                <div className="md-card-parent">
+                  <div className="mdcp-header">
+                    <h4>EVENT NAME HERE TILL HERE...</h4>
+                    <div>
+                      <BsChevronDown />
                     </div>
                   </div>
-                  <div className="md-card-parent">
-                    <div className="mdcp-header">
-                      <h4>EVENT NAME HERE TILL HERE...</h4>
-                      <div>
-                        <BsChevronDown />
+                  <div className="mdcp-body">
+                    <div>
+                      <div
+                        className="eibl-date"
+                        style={{ marginBottom: "0.4rem" }}
+                      >
+                        <span
+                          style={{
+                            position: "relative",
+                            top: "3px",
+                            marginLeft: "0",
+                          }}
+                        >
+                          <BsCalendar3 />
+                        </span>
+                        <span>29th Dec’2021</span>
+                      </div>
+                      <div
+                        className="eibl-location"
+                        style={{ marginBottom: "0.4rem" }}
+                      >
+                        <span
+                          style={{
+                            position: "relative",
+                            top: "3px",
+                            marginLeft: "0",
+                          }}
+                        >
+                          <BiMap />
+                        </span>
+                        <span>New Delhi</span>
                       </div>
                     </div>
-                    <div className="mdcp-body">
-                      <div>
-                        <div
-                          className="eibl-date"
-                          style={{ marginBottom: "0.4rem" }}
-                        >
-                          <span
-                            style={{
-                              position: "relative",
-                              top: "3px",
-                              marginLeft: "0",
-                            }}
-                          >
-                            <BsCalendar3 />
-                          </span>
-                          <span>29th Dec’2021</span>
-                        </div>
-                        <div
-                          className="eibl-location"
-                          style={{ marginBottom: "0.4rem" }}
-                        >
-                          <span
-                            style={{
-                              position: "relative",
-                              top: "3px",
-                              marginLeft: "0",
-                            }}
-                          >
-                            <BiMap />
-                          </span>
-                          <span>New Delhi</span>
-                        </div>
-                      </div>
-                      <div style={{}}>
-                        ONLINE
-                      </div>
+                    <div style={{}}>ONLINE</div>
+                  </div>
+                </div>
+                <div className="md-card-parent">
+                  <div className="mdcp-header">
+                    <h4>EVENT NAME HERE TILL HERE...</h4>
+                    <div>
+                      <BsChevronDown />
                     </div>
                   </div>
-                  <div className="md-card-parent">
-                    <div className="mdcp-header">
-                      <h4>EVENT NAME HERE TILL HERE...</h4>
-                      <div>
-                        <BsChevronDown />
+                  <div className="mdcp-body">
+                    <div>
+                      <div
+                        className="eibl-date"
+                        style={{ marginBottom: "0.4rem" }}
+                      >
+                        <span
+                          style={{
+                            position: "relative",
+                            top: "3px",
+                            marginLeft: "0",
+                          }}
+                        >
+                          <BsCalendar3 />
+                        </span>
+                        <span>29th Dec’2021</span>
+                      </div>
+                      <div
+                        className="eibl-location"
+                        style={{ marginBottom: "0.4rem" }}
+                      >
+                        <span
+                          style={{
+                            position: "relative",
+                            top: "3px",
+                            marginLeft: "0",
+                          }}
+                        >
+                          <BiMap />
+                        </span>
+                        <span>New Delhi</span>
                       </div>
                     </div>
-                    <div className="mdcp-body">
-                      <div>
-                        <div
-                          className="eibl-date"
-                          style={{ marginBottom: "0.4rem" }}
-                        >
-                          <span
-                            style={{
-                              position: "relative",
-                              top: "3px",
-                              marginLeft: "0",
-                            }}
-                          >
-                            <BsCalendar3 />
-                          </span>
-                          <span>29th Dec’2021</span>
-                        </div>
-                        <div
-                          className="eibl-location"
-                          style={{ marginBottom: "0.4rem" }}
-                        >
-                          <span
-                            style={{
-                              position: "relative",
-                              top: "3px",
-                              marginLeft: "0",
-                            }}
-                          >
-                            <BiMap />
-                          </span>
-                          <span>New Delhi</span>
-                        </div>
-                      </div>
-                      <div style={{}}>
-                        ONLINE
-                      </div>
+                    <div style={{}}>ONLINE</div>
+                  </div>
+                </div>
+                <div className="md-card-parent">
+                  <div className="mdcp-header">
+                    <h4>EVENT NAME HERE TILL HERE...</h4>
+                    <div>
+                      <BsChevronDown />
                     </div>
                   </div>
-                  <div className="md-card-parent">
-                    <div className="mdcp-header">
-                      <h4>EVENT NAME HERE TILL HERE...</h4>
-                      <div>
-                        <BsChevronDown />
+                  <div className="mdcp-body">
+                    <div>
+                      <div
+                        className="eibl-date"
+                        style={{ marginBottom: "0.4rem" }}
+                      >
+                        <span
+                          style={{
+                            position: "relative",
+                            top: "3px",
+                            marginLeft: "0",
+                          }}
+                        >
+                          <BsCalendar3 />
+                        </span>
+                        <span>29th Dec’2021</span>
+                      </div>
+                      <div
+                        className="eibl-location"
+                        style={{ marginBottom: "0.4rem" }}
+                      >
+                        <span
+                          style={{
+                            position: "relative",
+                            top: "3px",
+                            marginLeft: "0",
+                          }}
+                        >
+                          <BiMap />
+                        </span>
+                        <span>New Delhi</span>
                       </div>
                     </div>
-                    <div className="mdcp-body">
-                      <div>
-                        <div
-                          className="eibl-date"
-                          style={{ marginBottom: "0.4rem" }}
-                        >
-                          <span
-                            style={{
-                              position: "relative",
-                              top: "3px",
-                              marginLeft: "0",
-                            }}
-                          >
-                            <BsCalendar3 />
-                          </span>
-                          <span>29th Dec’2021</span>
-                        </div>
-                        <div
-                          className="eibl-location"
-                          style={{ marginBottom: "0.4rem" }}
-                        >
-                          <span
-                            style={{
-                              position: "relative",
-                              top: "3px",
-                              marginLeft: "0",
-                            }}
-                          >
-                            <BiMap />
-                          </span>
-                          <span>New Delhi</span>
-                        </div>
-                      </div>
-                      <div style={{}}>
-                        ONLINE
-                      </div>
+                    <div style={{}}>ONLINE</div>
+                  </div>
+                </div>
+                <div className="md-card-parent">
+                  <div className="mdcp-header">
+                    <h4>EVENT NAME HERE TILL HERE...</h4>
+                    <div>
+                      <BsChevronDown />
                     </div>
                   </div>
-                  <div className="md-card-parent">
-                    <div className="mdcp-header">
-                      <h4>EVENT NAME HERE TILL HERE...</h4>
-                      <div>
-                        <BsChevronDown />
+                  <div className="mdcp-body">
+                    <div>
+                      <div
+                        className="eibl-date"
+                        style={{ marginBottom: "0.4rem" }}
+                      >
+                        <span
+                          style={{
+                            position: "relative",
+                            top: "3px",
+                            marginLeft: "0",
+                          }}
+                        >
+                          <BsCalendar3 />
+                        </span>
+                        <span>29th Dec’2021</span>
+                      </div>
+                      <div
+                        className="eibl-location"
+                        style={{ marginBottom: "0.4rem" }}
+                      >
+                        <span
+                          style={{
+                            position: "relative",
+                            top: "3px",
+                            marginLeft: "0",
+                          }}
+                        >
+                          <BiMap />
+                        </span>
+                        <span>New Delhi</span>
                       </div>
                     </div>
-                    <div className="mdcp-body">
-                      <div>
-                        <div
-                          className="eibl-date"
-                          style={{ marginBottom: "0.4rem" }}
-                        >
-                          <span
-                            style={{
-                              position: "relative",
-                              top: "3px",
-                              marginLeft: "0",
-                            }}
-                          >
-                            <BsCalendar3 />
-                          </span>
-                          <span>29th Dec’2021</span>
-                        </div>
-                        <div
-                          className="eibl-location"
-                          style={{ marginBottom: "0.4rem" }}
-                        >
-                          <span
-                            style={{
-                              position: "relative",
-                              top: "3px",
-                              marginLeft: "0",
-                            }}
-                          >
-                            <BiMap />
-                          </span>
-                          <span>New Delhi</span>
-                        </div>
-                      </div>
-                      <div style={{}}>
-                        ONLINE
-                      </div>
+                    <div style={{}}>ONLINE</div>
+                  </div>
+                </div>
+                <div className="md-card-parent">
+                  <div className="mdcp-header">
+                    <h4>EVENT NAME HERE TILL HERE...</h4>
+                    <div>
+                      <BsChevronDown />
                     </div>
                   </div>
-                  <div className="md-card-parent">
-                    <div className="mdcp-header">
-                      <h4>EVENT NAME HERE TILL HERE...</h4>
-                      <div>
-                        <BsChevronDown />
+                  <div className="mdcp-body">
+                    <div>
+                      <div
+                        className="eibl-date"
+                        style={{ marginBottom: "0.4rem" }}
+                      >
+                        <span
+                          style={{
+                            position: "relative",
+                            top: "3px",
+                            marginLeft: "0",
+                          }}
+                        >
+                          <BsCalendar3 />
+                        </span>
+                        <span>29th Dec’2021</span>
+                      </div>
+                      <div
+                        className="eibl-location"
+                        style={{ marginBottom: "0.4rem" }}
+                      >
+                        <span
+                          style={{
+                            position: "relative",
+                            top: "3px",
+                            marginLeft: "0",
+                          }}
+                        >
+                          <BiMap />
+                        </span>
+                        <span>New Delhi</span>
                       </div>
                     </div>
-                    <div className="mdcp-body">
-                      <div>
-                        <div
-                          className="eibl-date"
-                          style={{ marginBottom: "0.4rem" }}
-                        >
-                          <span
-                            style={{
-                              position: "relative",
-                              top: "3px",
-                              marginLeft: "0",
-                            }}
-                          >
-                            <BsCalendar3 />
-                          </span>
-                          <span>29th Dec’2021</span>
-                        </div>
-                        <div
-                          className="eibl-location"
-                          style={{ marginBottom: "0.4rem" }}
-                        >
-                          <span
-                            style={{
-                              position: "relative",
-                              top: "3px",
-                              marginLeft: "0",
-                            }}
-                          >
-                            <BiMap />
-                          </span>
-                          <span>New Delhi</span>
-                        </div>
-                      </div>
-                      <div style={{}}>
-                        ONLINE
-                      </div>
+                    <div style={{}}>ONLINE</div>
+                  </div>
+                </div>
+                <div className="md-card-parent">
+                  <div className="mdcp-header">
+                    <h4>EVENT NAME HERE TILL HERE...</h4>
+                    <div>
+                      <BsChevronDown />
                     </div>
                   </div>
+                  <div className="mdcp-body">
+                    <div>
+                      <div
+                        className="eibl-date"
+                        style={{ marginBottom: "0.4rem" }}
+                      >
+                        <span
+                          style={{
+                            position: "relative",
+                            top: "3px",
+                            marginLeft: "0",
+                          }}
+                        >
+                          <BsCalendar3 />
+                        </span>
+                        <span>29th Dec’2021</span>
+                      </div>
+                      <div
+                        className="eibl-location"
+                        style={{ marginBottom: "0.4rem" }}
+                      >
+                        <span
+                          style={{
+                            position: "relative",
+                            top: "3px",
+                            marginLeft: "0",
+                          }}
+                        >
+                          <BiMap />
+                        </span>
+                        <span>New Delhi</span>
+                      </div>
+                    </div>
+                    <div style={{}}>ONLINE</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -412,7 +400,7 @@ export default function ModeratorDummy2() {
             </span>
           </div>
         </div>
-     <LoggedInSidebar />
+        <LoggedInSidebar />
       </div>
     </>
   );

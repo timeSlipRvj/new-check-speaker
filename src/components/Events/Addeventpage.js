@@ -143,7 +143,7 @@ export default function Addeventpage() {
                           Choose Mode
                         </option>
                         <option value="Online">Online</option>
-                        <option value="Offline">Offline</option>
+                        <option value="Offline">In-Person</option>
                         <option value="Hybrid">Hybrid</option>
                       </select>
                       <p>Location</p>
@@ -162,7 +162,7 @@ export default function Addeventpage() {
                         onChange={(e) => setTopic(e.target.value)}
                         value={topic}
                       />
-                      <p>Event’s URL (Apply to Speak) </p>
+                      <p>Event’s URL (Apply to Speak) [Start with https://] </p>
                       <input
                         type="url"
                         className="mpes-input"

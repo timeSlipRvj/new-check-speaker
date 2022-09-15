@@ -1,7 +1,7 @@
 import React from "react";
 import "./ModeratorDummy.css";
 import { AiOutlineSafetyCertificate } from "react-icons/ai";
-import {  BsCalendar3 } from "react-icons/bs";
+import { BsCalendar3 } from "react-icons/bs";
 import LoggedInSidebar from "../accountSide/LoggedInSidebar";
 
 export default function ModeratorDummy4() {
@@ -100,7 +100,7 @@ export default function ModeratorDummy4() {
                     <option value="Online" selected>
                       Conference
                     </option>
-                    <option value="Offline">Offline</option>
+                    <option value="Offline">In-Person</option>
                   </select>
                 </div>
                 <div className="stl-child">
@@ -118,7 +118,7 @@ export default function ModeratorDummy4() {
                     <option value="Online" selected>
                       Conference
                     </option>
-                    <option value="Offline">Offline</option>
+                    <option value="Offline">In-Person</option>
                   </select>
                 </div>
               </div>
@@ -263,7 +263,6 @@ export default function ModeratorDummy4() {
                     className="con-lower-btn eprbtn1"
                     style={{
                       margin: "1rem",
-                      
                     }}
                   >
                     Update Subscription

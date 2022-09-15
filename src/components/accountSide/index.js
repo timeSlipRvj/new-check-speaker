@@ -509,7 +509,7 @@ export default function Index() {
                   <option value="Online" selected>
                     Conference
                   </option>
-                  <option value="Offline">Offline</option>
+                  <option value="Offline">In-Person</option>
                 </select>
               </div>
               <div className="stl-child">
@@ -527,7 +527,7 @@ export default function Index() {
                   <option value="Online" selected>
                     Conference
                   </option>
-                  <option value="Offline">Offline</option>
+                  <option value="Offline">In-Person</option>
                 </select>
               </div>
               <div className="stl-child">
@@ -872,7 +872,7 @@ export default function Index() {
                   <option value="Online" selected>
                     Conference
                   </option>
-                  <option value="Offline">Offline</option>
+                  <option value="Offline">In-Person</option>
                 </select>
               </div>
               <div className="stl-child">
@@ -890,7 +890,7 @@ export default function Index() {
                   <option value="Online" selected>
                     Conference
                   </option>
-                  <option value="Offline">Offline</option>
+                  <option value="Offline">In-Person</option>
                 </select>
               </div>
               <div className="stl-child">
@@ -1209,7 +1209,7 @@ export default function Index() {
                   <option value="Online" selected>
                     Conference
                   </option>
-                  <option value="Offline">Offline</option>
+                  <option value="Offline">In-Person</option>
                 </select>
               </div>
               <div className="stl-child">
@@ -1227,7 +1227,7 @@ export default function Index() {
                   <option value="Online" selected>
                     Conference
                   </option>
-                  <option value="Offline">Offline</option>
+                  <option value="Offline">In-Person</option>
                 </select>
               </div>
               <div className="stl-child">
@@ -1572,7 +1572,7 @@ export default function Index() {
                   <option value="Online" selected>
                     Conference
                   </option>
-                  <option value="Offline">Offline</option>
+                  <option value="Offline">In-Person</option>
                 </select>
               </div>
               <div className="stl-child">
@@ -1590,7 +1590,7 @@ export default function Index() {
                   <option value="Online" selected>
                     Conference
                   </option>
-                  <option value="Offline">Offline</option>
+                  <option value="Offline">In-Person</option>
                 </select>
               </div>
             </div>
