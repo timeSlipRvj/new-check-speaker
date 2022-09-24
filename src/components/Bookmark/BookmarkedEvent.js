@@ -37,7 +37,9 @@ const BookmarkedEvent = () => {
                     <div className="ec-section1">
                       <div className="eds1-l">
                         <p className="e1">{data?.name}</p>
-                        <p className="e2">{data?.state}, {data?.country}</p>
+                        <p className="e2">
+                          {data?.state}, {data?.country}
+                        </p>
                       </div>
                       <div className="eds1-r">
                         <BsFillBookmarkFill />
@@ -52,7 +54,9 @@ const BookmarkedEvent = () => {
                         </div>
                         <p>Date: {new Date(data?.start_time)}</p>
                       </span>
-                      <p className="e8">{data?.mode}</p>
+                      <p className="e8">
+                        {data?.mode == "Offline" ? "In-Person" : data?.mode}
+                      </p>
                     </div>
                     <div className="ec-section3">
                       Tags: <p className="e4">{data?.tags} </p>
@@ -60,15 +64,15 @@ const BookmarkedEvent = () => {
                     <div className="ec-section4">{data?.description}</div>
                     <div className="ec-section5">
                       <a href={`/single-event/${data?.id}`}>
-                      <button
-                        className="eprbtn2"
-                        style={{
-                          background: "#ffbf19",
-                          padding: "0.5rem 2rem",
-                        }}
-                      >
-                        View Details
-                      </button>
+                        <button
+                          className="eprbtn2"
+                          style={{
+                            background: "#ffbf19",
+                            padding: "0.5rem 2rem",
+                          }}
+                        >
+                          View Details
+                        </button>
                       </a>
                     </div>
                   </div>

@@ -15,6 +15,7 @@ import BasicInfo from "./components/accountSide/BasicInfo";
 import BillingInformation from "./components/Billing/BillingInformation";
 import BookmarkedEvent from "./components/Bookmark/BookmarkedEvent";
 import SingleEventPage from "./components/Events/SingleEventPage";
+import MODSingleEventPage from "./components/Events/MODSingleEventPage";
 import MyProfileEvent from "./components/Profile/MyProfileEvent";
 import SingleEventPageExclusive from "./components/Events/SingleEventPageExclusive";
 import SignInUp from "./components/Profile/SignInUp";
@@ -85,6 +86,10 @@ const App = () => {
           <Route
             path="/event/:id"
             element={<PrivateRoute component={SingleEventPage} />}
+          />
+          <Route
+            path="/modevent/:id"
+            element={<PrivateRoute component={MODSingleEventPage} />}
           />
           <Route path="/faq" element={<Faq />} />
           <Route path="/login" element={<SignInUp setLogin={setLogin} />} />

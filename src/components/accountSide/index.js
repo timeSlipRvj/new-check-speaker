@@ -574,7 +574,7 @@ export default function Index() {
                           ) : null}
                           &nbsp;
                           <a
-                            href={`/event/${data?.id}`}
+                            href={`/modevent/${data?.id}`}
                             target="_blank"
                             rel="noopener noreferrer"
                           >
@@ -615,7 +615,9 @@ export default function Index() {
                             <span>{data?.location}</span>
                           </div>
                         </div>
-                        <div style={{}}>{data?.mode}</div>
+                        <div style={{}}>
+                          {data?.mode == "Offline" ? "In-Person" : data?.mode}
+                        </div>
                       </div>
                       <br />
                       <div className="approve">
@@ -729,7 +731,9 @@ export default function Index() {
                             </div>
                             <p>{data?.startTime}</p>
                           </span>
-                          <p className="e8">{data?.mode}</p>
+                          <p className="e8">
+                            {data?.mode == "Offline" ? "In-Person" : data?.mode}
+                          </p>
                         </div>
                         <div className="ec-section3">
                           Tags: <p className="e4">{data?.tags}</p>
@@ -737,10 +741,12 @@ export default function Index() {
                         <div className="ec-section4">{data?.description}</div>
                         <div className="ec-section5">
                           <a
+                            target="_blank"
+                            rel="noopener noreferrer"
                             href={
                               data.isExclusive
-                                ? `/exevent/${data?.id}`
-                                : `/event/${data?.id}`
+                                ? `/modevent/${data?.id}`
+                                : `/modevent/${data?.id}`
                             }
                           >
                             <button
@@ -806,7 +812,9 @@ export default function Index() {
                             </div>
                             <p>{data?.startTime}</p>
                           </span>
-                          <p className="e8">{data?.mode}</p>
+                          <p className="e8">
+                            {data?.mode == "Offline" ? "In-Person" : data?.mode}
+                          </p>
                         </div>
                         <div className="ec-section3">
                           Tags: <p className="e4">{data?.tags}</p>
