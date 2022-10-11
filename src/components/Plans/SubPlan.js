@@ -95,7 +95,7 @@ const SubPlan = () => {
       )
       .then((t) => setDatas(t?.data?.order_id));
     const options = {
-      key: "rzp_test_XYrif8dVNh3U02",
+      key: "rzp_live_a9w4WLhoRPSxPi",
       currency: "INR",
       amount: price * 100,
       order_id: datas,
